@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+'''
+Horizontally concatenate files.
+
+For viu, figlet, etc it is recommended you use -w inside and out,
+as styling is (currently) not recognised.
+'''
+
+import argparse
+from os import popen
+from sys import stdin
+from typing import Iterable, Optional
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'file', nargs='+',
+    help="Accepts - for stdin (noninteractive)")
+parser.add_argument(
+    '--widths', '-w', nargs='+', default=[],
+    help="Widths of each file (useful if you're using color styling etc). Accepts - to automatically determine. Does not have to match nunber of files.")
+
+def horizontal_concat(
+    strings: Iterable[str],
+    col_widths: Iterable[Optional[int]],
+    sep=' ',
+) -> str:
+    # split (and remove trailing newline)
+    col_rows = [s.removesuffix('\n').split('\n') for s in strings]
+
+    longest = lambda x: max(map(len, x))
+    most_rows = longest(col_rows)
+
+    actual_col_widths = list(map(longest, col_rows))
+    for i, w in enumerate(col_widths):
+        if w is not None:
+            actual_col_widths[i] = w
+
+    # fill with blanks where needed
+    col_rows = [
+        [row.ljust(width) for row in rows]
+        + [' '*width] * (most_rows - len(rows))
+        for rows, width in zip(col_rows, actual_col_widths)
+    ]
+
+    row_cols = zip(*col_rows)  # transpile
+
+    return '\n'.join(
+        sep.join(row)
+        for row in row_cols
+    )
+
+if __name__ == '__main__':
+    args = parser.parse_args()
+    print(horizontal_concat(
+        [(stdin if path == '-' else open(path)).read() for path in args.file],
+        [None if width == '-' else int(width) for width in args.widths]
+    ))

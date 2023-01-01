@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+'''
+Greeting script.
+Displays the day of the week or some user-defined string on certain days.
+Pairs well with figlet and lolcat!
+'''
+
+from datetime import date
+from typing import Callable
+
+CALENDAR: dict[
+    tuple[int, int],
+    str | Callable[[date], str]
+] = {
+    (1, 1): 'New Year',
+    (5, 4): 'May the Fourth',
+    (9, 7): 'Birthday',
+    (12, 25): 'Christmas',
+    (12, 31): 'Hogmanay',
+    'default': lambda date: f'{date:%A}',
+}
+
+def greeting(date: date):
+    obj = CALENDAR.get(
+        (date.month, date.day),
+        CALENDAR.get('default'))
+    return obj(date) if callable(obj) else obj
+
+if __name__ == '__main__':
+    print(greeting(date.today()))

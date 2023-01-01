@@ -1,0 +1,10 @@
+# Mia yun Ruse's `.config`
+## .gitignore
+
+# Junk
+.DS_Store
+
+# Device-only
+ssh/
+device_bin/
+zsh/path_device.zsh
