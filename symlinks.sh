@@ -2,7 +2,7 @@
 ## Symlinks for dotfiles
 
 # macOS
-ln -fs "~/Library/Mobile Documents/com~apple~CloudDoc" ~/iCloud
+ln -fs "~/Library/Mobile Documents/com~apple~CloudDocs" ~/iCloud
 
 # .config
 touch ~/.hushlogin  # hide "last login"

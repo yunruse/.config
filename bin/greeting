@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 '''
-Greeting script.
-Displays the day of the week or some user-defined string on certain days.
-Pairs well with figlet and lolcat!
+Date-based greeting.
+Prints weekday or fancy name greeting, but easily customisable.
+Pairs well with figlet, lolcat and hcat!
 '''
 
 from datetime import date
-from typing import Callable
+from typing import Callable, Literal
 
 CALENDAR: dict[
-    tuple[int, int],
-    str | Callable[[date], str]
+    tuple[int, int] | Literal['default'],  # date
+    str | Callable[[date], str]  # string (or string function
 ] = {
     (1, 1): 'New Year',
     (5, 4): 'May the Fourth',

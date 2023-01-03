@@ -16,29 +16,63 @@ parser.add_argument(
     'file', nargs='+',
     help="Accepts - for stdin (noninteractive)")
 parser.add_argument(
+    '--no-color', dest='skip_color_codes', action='store_true',
+    help="Do not ignore invisible color codes, and count all characters."
+    " This may affect column length, and has negligible speedup.")
+parser.add_argument(
+    '--sep', default=' ',
+    help="Column separator. Default is a single space.")
+parser.add_argument(
     '--widths', '-w', nargs='+', default=[],
-    help="Widths of each file (useful if you're using color styling etc). Accepts - to automatically determine. Does not have to match nunber of files.")
+    help="Widths of each file (useful if you're using color styling etc)."
+    " Accepts - to automatically determine."
+    " Does not have to match nunber of files.")
+
+def visible_char_count(string: str) -> int:
+    '''Number of visible characters in a string, Terminal color codes notwithstanding.'''
+    # This has been tested with `viu`, which generates some long sixel codes,
+    # and some other standard color code too.
+    # Hopefully it caches other codes too!
+    # It does not seem to take extra time.
+    ESC = chr(27)
+    ESC_FINISH_COL_CODE = chr(109)  # 'm'
+    n = 0
+    is_visible = 1
+    for c in string:
+        if c == ESC:
+            is_visible = 0
+            continue
+        elif not is_visible and c == ESC_FINISH_COL_CODE:
+            is_visible = 1
+            continue
+        n += is_visible
+    return n
 
 def horizontal_concat(
     strings: Iterable[str],
     col_widths: Iterable[Optional[int]],
+    skip_color_codes: bool = True,
     sep=' ',
 ) -> str:
+    length = len if skip_color_codes else visible_char_count
     # split (and remove trailing newline)
-    col_rows = [s.removesuffix('\n').split('\n') for s in strings]
+    col_rows = [s.removesuffix('\n').split('\n') for s in strings]  # list[column]
 
-    longest = lambda x: max(map(len, x))
-    most_rows = longest(col_rows)
-
-    actual_col_widths = list(map(longest, col_rows))
+    # get lengths for filling blanks:
+    # zip(*x) is only good on rectangular transpose!
+    max_row_count = max(map(len, col_rows))
+    actual_col_widths = list(map(
+        lambda col: max(map(length, col)),
+        col_rows))
+    # (args override)
     for i, w in enumerate(col_widths):
         if w is not None:
             actual_col_widths[i] = w
 
-    # fill with blanks where needed
+    # fill with blanks
     col_rows = [
         [row.ljust(width) for row in rows]
-        + [' '*width] * (most_rows - len(rows))
+        + [' '*width] * (max_row_count - len(rows))
         for rows, width in zip(col_rows, actual_col_widths)
     ]
 
@@ -53,5 +87,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(horizontal_concat(
         [(stdin if path == '-' else open(path)).read() for path in args.file],
-        [None if width == '-' else int(width) for width in args.widths]
+        col_widths=[None if width == '-' else int(width) for width in args.widths],
+        skip_color_codes=args.skip_color_codes,
+        sep=args.sep,
     ))
