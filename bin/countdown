@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+'''
+Countdown date utility.
+Lines should take the form YYYY Mon DD Eventname.
+If a comment ends with () the contents of the brackets
+are used to format the following event names.
+
+'''
+
+from argparse import ArgumentParser
+from datetime import date as Date, datetime as Datetime
+from pathlib import Path
+from typing import Generator
+
+from rich.console import Console
+
+parser = ArgumentParser()
+parser.add_argument(
+    'file',
+    help="The file to parse."
+    " Each line should take the form 'YYYY Mon DD Eventname'.")
+parser.add_argument(
+    '-n', nargs='?', default=5,
+    help="Number of dates to display.")
+
+Event = tuple[Date, str, str]
+def get_events(filename: Path) -> Generator[Event, None, None]:
+    with open(filename) as f:
+        style = ''
+        for line in f:
+            line = line.strip()
+            if not line: continue
+            if line.startswith('#'):
+                if '(' in line and ')' in line:
+                    style = line.split('(')[-1].split(')')[0]
+                continue
+            y, m, d, name = line.split(' ', 3)
+            yield Datetime.strptime(f'{y} {m} {d}', '%Y %b %d').date(), name, style
+
+if __name__ == '__main__':
+    args = parser.parse_args()
+    events = sorted(get_events(args.file), key=lambda x: x[0])[:args.n]
+    today = Date.today()
+    c = Console()
+    for date, name, style in events:
+        d = (date - today).days
+        c.print(f'[bold cyan]{d:>3}[/] [italic {style}]{name}[/]', highlight=False)
