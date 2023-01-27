@@ -20,22 +20,26 @@ parser.add_argument(
     help="The file to parse."
     " Each line should take the form 'YYYY Mon DD Eventname'.")
 parser.add_argument(
-    '-n', nargs='?', default=5,
+    '-n', nargs='?', default=5, const=None,
     help="Number of dates to display.")
 
 Event = tuple[Date, str, str]
+
+
 def get_events(filename: Path) -> Generator[Event, None, None]:
     with open(filename) as f:
         style = ''
         for line in f:
             line = line.strip()
-            if not line: continue
+            if not line:
+                continue
             if line.startswith('#'):
                 if '(' in line and ')' in line:
                     style = line.split('(')[-1].split(')')[0]
                 continue
             y, m, d, name = line.split(' ', 3)
             yield Datetime.strptime(f'{y} {m} {d}', '%Y %b %d').date(), name, style
+
 
 if __name__ == '__main__':
     args = parser.parse_args()
@@ -44,4 +48,5 @@ if __name__ == '__main__':
     c = Console()
     for date, name, style in events:
         d = (date - today).days
-        c.print(f'[bold cyan]{d:>3}[/] [italic {style}]{name}[/]', highlight=False)
+        c.print(
+            f'[bold cyan]{d:>3}[/] [italic {style}]{name}[/]', highlight=False)

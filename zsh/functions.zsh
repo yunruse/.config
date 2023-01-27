@@ -11,6 +11,7 @@ function zedit {
   vscode ~/.config/zsh
   source ~/.zshrc
 }
+alias zclear="clear; zsh ~/.zlogin"
 
 # helpful tools
 export VISUAL="nano"
@@ -22,8 +23,15 @@ alias f="fzf --preview 'bat --style=numbers --color=always --line-range :100 {} 
 # python
 alias python="python3.11"
 alias pip="python3.11 -m pip"
-function noether { python3 -im noether }
 function import { python -ic "import $*" }
+function noether { python3 -im noether "$*" }
+function noe {
+  clear
+  pushd ~/iCloud/Projects/Noether >/dev/null
+  python3 tests/auto_catalogue.py
+  gh issue list --milestone v1.0
+  python3 ~/.config/zsh/noether_units.py
+}
 
 # misc
 function yt {

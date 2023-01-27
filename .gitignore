@@ -9,3 +9,4 @@ ssh/
 device_bin/
 zsh/path_device.zsh
 zsh/calendar.txt
+gh/hosts.yml

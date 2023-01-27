@@ -12,8 +12,8 @@ hcat <(
     lolcat -fp 2 \
 ) -w $w1 $w2
 
-
-countdown ~/.config/zsh/calendar.txt
+alias countdown="countdown ~/.config/zsh/calendar.txt"
+countdown
 
 # unset w1
 # unset w2
