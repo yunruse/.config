@@ -1,5 +1,7 @@
 # Mia yun Ruse's `.config`
 
+![The terminal in use.](README.png)
+
 Hey hi howdy! These are my personal configuration files and bash scripts for the terminal.
 
 It's mostly just so I can track changes and keep `.config` clean (would recommend) but **if anything looks useful please use it!** It's totally public domain, yo.
