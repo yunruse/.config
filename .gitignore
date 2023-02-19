@@ -4,6 +4,9 @@
 # Junk
 .DS_Store
 
+# History
+micro/buffers/history
+
 # Device-only
 ssh/
 device_bin/

@@ -1,5 +1,8 @@
 # Mia yun Ruse's `.config`
 ## Aliases and functions
+EDITOR=micro
+alias edit="$EDITOR"
+alias nano="micro"
 
 # cli to gui
 alias preview="open -a preview"
