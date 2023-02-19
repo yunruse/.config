@@ -77,7 +77,8 @@ def get_events(filename: Path) -> Generator[Event, None, None]:
                 continue
 
             if line.startswith('#'):
-                category = Category.from_string(line.removeprefix('#'))
+                if '[' in line:
+                    category = Category.from_string(line.removeprefix('#'))
                 continue
 
             y, m, d, name = line.split(' ', 3)
