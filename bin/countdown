@@ -18,6 +18,7 @@ from typing import Generator
 from argparse import ArgumentParser
 from datetime import date as Date, datetime as Datetime
 from pathlib import Path
+from sys import exit
 
 try:
     from rich.console import Console
@@ -56,15 +57,15 @@ class Event:
     name: str
     category: Category
 
-    def days_left(self):
+    def days_until(self):
         today = Date.today()
         return (e.date - today).days
 
     def __str__(self):
-        return f'{self.days_left():>3} {self.name}'
+        return f'{self.days_until():>3} {self.name}'
 
     def __rich__(self):
-        return f'[bold cyan]{self.days_left():>3}[/] [italic {self.category.style}]{self.name}[/]'
+        return f'[bold cyan]{self.days_until():>3}[/] [italic {self.category.style}]{self.name}[/]'
 
 
 def get_events(filename: Path) -> Generator[Event, None, None]:
@@ -108,6 +109,11 @@ parser.add_argument(
     help="Display past events.")
 
 
+parser.add_argument(
+    '-d', '--days-until', metavar='NAME',
+    help="Display days until a named event. Exits with code 9 if not found.")
+
+
 if __name__ == '__main__':
     args = parser.parse_args()
     if args.all:
@@ -126,9 +132,20 @@ if __name__ == '__main__':
 
     if not args.past:
         events = filter(lambda x: x.date > today, events)
-    events = sorted(events, key=lambda x: x.date)[:args.number]
+    
+    if not args.days_until:
+        events = sorted(events, key=lambda x: x.date)[:args.number]
 
-    if args.categories:
+    if args.days_until is not None:
+        for e in events:
+            if e.name == args.days_until:
+                print(e.days_until())
+                break
+        else:
+            exit(9)
+
+
+    elif args.categories:
         cats: dict[Category, list[Event]] = dict()
         for e in events:
             cats.setdefault(e.category, [])
