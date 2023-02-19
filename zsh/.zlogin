@@ -13,7 +13,7 @@ hcat <(
 ) -w $w1 $w2
 
 alias countdown="countdown ~/.config/zsh/calendar.txt"
-countdown
+countdown $*
 
 # unset w1
 # unset w2

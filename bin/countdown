@@ -1,52 +1,144 @@
 #!/usr/bin/env python3
 '''
 Countdown date utility.
-Lines should take the form YYYY Mon DD Eventname.
-If a comment ends with () the contents of the brackets
-are used to format the following event names.
 
+Requires (atm) `pip install rich`.
+
+Lines should take the form YYYY Mon DD Eventname.
+
+Comments of the form
+# Category [richstyle]
+
+are used to collate and format events.
 '''
+
+from dataclasses import dataclass
+from typing import Generator
 
 from argparse import ArgumentParser
 from datetime import date as Date, datetime as Datetime
 from pathlib import Path
-from typing import Generator
 
-from rich.console import Console
+try:
+    from rich.console import Console
+except:
+    Console = None
+
+
+# TODO: str(Event) and `--no-rich` flag (default if `rich` not found!)
+
+
+@dataclass(frozen=True)
+class Category:
+    name: str = ''
+    style: str = ''
+
+    @classmethod
+    def from_string(cls, string: str):
+        name = string
+        style = ''
+        if '[' in string:
+            name, style = string.split('[', 1)
+            style = style.removesuffix(']')
+
+        return cls(name.strip(), style.strip())
+
+    def __str__(self):
+        return '    ' + self.name
+
+    def __rich__(self):
+        return f'    [bold {self.style}]{self.name}'
+
+
+@dataclass(frozen=True)
+class Event:
+    date: Date
+    name: str
+    category: Category
+
+    def days_left(self):
+        today = Date.today()
+        return (e.date - today).days
+
+    def __str__(self):
+        return f'{self.days_left():>3} {self.name}'
+
+    def __rich__(self):
+        return f'[bold cyan]{self.days_left():>3}[/] [italic {self.category.style}]{self.name}[/]'
+
+
+def get_events(filename: Path) -> Generator[Event, None, None]:
+    with open(filename) as f:
+        category = Category()
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+
+            if line.startswith('#'):
+                category = Category.from_string(line.removeprefix('#'))
+                continue
+
+            y, m, d, name = line.split(' ', 3)
+            yield Event(
+                Datetime.strptime(f'{y} {m} {d}', '%Y %b %d').date(),
+                name,
+                category)
+
 
 parser = ArgumentParser()
 parser.add_argument(
     'file',
     help="The file to parse."
     " Each line should take the form 'YYYY Mon DD Eventname'.")
+
+
 parser.add_argument(
-    '-n', nargs='?', default=5, const=None,
-    help="Number of dates to display.")
+    '-a', '--all', action='store_true',
+    help="Alias for -ncp.")
 
-Event = tuple[Date, str, str]
-
-
-def get_events(filename: Path) -> Generator[Event, None, None]:
-    with open(filename) as f:
-        style = ''
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            if line.startswith('#'):
-                if '(' in line and ')' in line:
-                    style = line.split('(')[-1].split(')')[0]
-                continue
-            y, m, d, name = line.split(' ', 3)
-            yield Datetime.strptime(f'{y} {m} {d}', '%Y %b %d').date(), name, style
+parser.add_argument(
+    '-n', '--number', nargs='?', default=5, const=None, type=int,
+    help="Number of dates to display. Provide no number to display all.")
+parser.add_argument(
+    '-c', '--categories', action='store_true',
+    help="Sort countdowns by category, then countdown.")
+parser.add_argument(
+    '-p', '--past', action='store_true',
+    help="Display past events.")
 
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    events = sorted(get_events(args.file), key=lambda x: x[0])[:args.n]
+    if args.all:
+        args.categories = True
+        args.past = True
+        args.number = None
+
+    def print(*objects):
+        if Console is None:
+            print(*objects)
+        else:
+            Console().print(*objects, highlight=False)
+
     today = Date.today()
-    c = Console()
-    for date, name, style in events:
-        d = (date - today).days
-        c.print(
-            f'[bold cyan]{d:>3}[/] [italic {style}]{name}[/]', highlight=False)
+    events = get_events(args.file)
+
+    if not args.past:
+        events = filter(lambda x: x.date > today, events)
+    events = sorted(events, key=lambda x: x.date)[:args.number]
+
+    if args.categories:
+        cats: dict[Category, list[Event]] = dict()
+        for e in events:
+            cats.setdefault(e.category, [])
+            cats[e.category].append(e)
+
+        for c, es in cats.items():
+            print(c)
+            for e in es:
+                print(e)
+
+    else:
+        for e in events:
+            print(e)
