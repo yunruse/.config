@@ -1,6 +1,9 @@
 # Mia yun Ruse's `.config`
 ## Fancy login banner
 
+# go away, "last login" message
+clear
+
 w1=24
 w2=$(bc -e "$COLUMNS - $w1 - 1")
 alias countdown="countdown ~/.config/zsh/calendar.txt"

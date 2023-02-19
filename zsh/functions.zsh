@@ -43,10 +43,9 @@ function zedit {
 
 
 # Dashboard
-function zclear {
-  clear
-  zsh ~/.zlogin $*
-}
+alias zclear="zsh ~/.zlogin"
+
+alias dash="zclear -n; noe; cd"
 function noe {
   # Development dashboard for Noether
   pushd ~/Projects/Noether >/dev/null
@@ -54,7 +53,6 @@ function noe {
   make test --silent 
   python3 ~/.config/zsh/noether_units.py
 }
-alias dash="zclear -n; noe; cd"
 
 
 # Misc
