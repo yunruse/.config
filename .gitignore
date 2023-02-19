@@ -4,7 +4,12 @@
 # Junk
 .DS_Store
 
-# History
+# This isn't what .config is for you fools! Read XDG! D:
+vscode/workspaceStorage
+vscode/globalStorage
+vscode/History
+vscode/sync
+
 micro/buffers/history
 
 # Device-only

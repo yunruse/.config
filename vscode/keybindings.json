@@ -1,0 +1,247 @@
+// Mia's VS Code bindings
+
+// TL;DR: ⌘N and ⌘W are now chorded
+
+[
+    // ⌘N
+    {
+        "key": "cmd+n",
+        "command": "-workbench.action.files.newUntitledFile"
+    },
+
+    // New tab
+    {
+        "key": "cmd+n space",
+        "command": "welcome.showNewFileEntries"
+    },
+    {
+        "key": "ctrl+alt+cmd+n",
+        "command": "-welcome.showNewFileEntries"
+    },
+    {
+        "key": "cmd+n f",
+        "command": "workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "cmd+n n",
+        "command": "ipynb.newUntitledIpynb"
+    },
+    {
+        "key": "cmd+n i",
+        "command": "jupyter.createnewinteractive"
+    },
+    
+    // New file
+    {
+        "key": "cmd+n shift+f",
+        "command": "explorer.newFile"
+    },
+    {
+        "key": "cmd+n d",
+        "command": "explorer.newFolder"
+    },
+
+    // New window
+    {
+        "key": "cmd+n w",
+        "command": "workbench.action.newWindow"
+    },
+    {
+        "key": "shift+cmd+n",
+        "command": "-workbench.action.newWindow"
+    },
+
+    // New group
+    {
+        "key": "cmd+n right",
+        "command": "workbench.action.newGroupRight"
+    },
+    {
+        "key": "cmd+n up",
+        "command": "workbench.action.newGroupAbove"
+    },
+    {
+        "key": "cmd+n down",
+        "command": "workbench.action.newGroupBelow"
+    },
+    {
+        "key": "cmd+n left",
+        "command": "workbench.action.newGroupLeft"
+    },
+
+    // Terminals
+    {
+        "key": "cmd+n t",
+        "command": "python.createTerminal"
+    },
+    {
+        "key": "cmd+n shift+t",
+        "command": "workbench.action.terminal.openNativeConsole",
+        "when": ""
+    },
+
+
+
+
+    // ⌘W
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeWindow",
+        "when": "!editorIsOpen && !multipleEditorGroups"
+    },
+
+    // Close tab
+    {
+        "key": "cmd+w f",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+
+    // Unclose tab
+    {
+        "key": "cmd+w cmd+z",
+        "command": "workbench.action.reopenClosedEditor"
+    },
+    {
+        "key": "shift+cmd+t",
+        "command": "-workbench.action.reopenClosedEditor"
+    },
+
+    // Close tabs
+    {
+        "key": "cmd+w s",
+        "command": "workbench.action.closeUnmodifiedEditors"
+    },
+    {
+        "key": "cmd+k u",
+        "command": "-workbench.action.closeUnmodifiedEditors"
+    },
+    {
+        "key": "cmd+w shift+f",
+        "command": "workbench.action.closeOtherEditors"
+    },
+    {
+        "key": "alt+cmd+t",
+        "command": "-workbench.action.closeOtherEditors"
+    },
+    {
+        "key": "cmd+w shift+a",
+        "command": "workbench.action.closeAllEditors"
+    },
+    {
+        "key": "cmd+k cmd+w",
+        "command": "-workbench.action.closeAllEditors"
+    },
+    {
+        "key": "cmd+w a",
+        "command": "workbench.action.closeEditorsInGroup"
+    },
+    {
+        "key": "cmd+k w",
+        "command": "-workbench.action.closeEditorsInGroup"
+    },
+
+    // Close workspace
+    {
+        "key": "cmd+w w",
+        "command": "workbench.action.closeFolder",
+        "when": "emptyWorkspaceSupport && workbenchState != 'empty'"
+    },
+    {
+        "key": "cmd+k f",
+        "command": "-workbench.action.closeFolder",
+        "when": "emptyWorkspaceSupport && workbenchState != 'empty'"
+    },
+
+    // Close window
+    {
+        "key": "cmd+w cmd+w",
+        "command": "workbench.action.closeWindow"
+    },
+    {
+        "key": "cmd+w w",
+        "command": "workbench.action.closeWindow",
+        "when": "!editorIsOpen && !multipleEditorGroups"
+    }, 
+    {
+        "key": "shift+cmd+w",
+        "command": "-workbench.action.closeWindow"
+    },
+
+    // Close groups
+    {
+        "key": "cmd+w g",
+        "command": "workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "cmd+w shift+g",
+        "command": "workbench.action.closeAllGroups"
+    },
+    {
+        "key": "cmd+k shift+cmd+w",
+        "command": "-workbench.action.closeAllGroups"
+    },
+
+
+
+    // B J L
+    {
+        "key": "shift+cmd+b",
+        "command": "-workbench.action.tasks.build"
+    },
+    {
+        "key": "shift+cmd+b",
+        "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    {
+        "key": "cmd+l",
+        "command": "workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "shift+cmd+j",
+        "command": "workbench.action.toggleStatusbarVisibility"
+    },
+    {
+        "key": "shift+cmd+j",
+        "command": "-workbench.action.search.toggleQueryDetails",
+        "when": "inSearchEditor || searchViewletFocus"
+    },
+
+
+
+    // Summons
+    {
+        "key": "cmd+g",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+p",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "shift+cmd+p",
+        "command": "-workbench.action.showCommands"
+    },
+
+
+
+    // used for my macOS screenshots
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+]
