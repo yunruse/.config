@@ -3,6 +3,7 @@
 
 # macOS
 ln -fs "~/Library/Mobile Documents/com~apple~CloudDocs" ~/iCloud
+ln -fs ~/iCloud/Projects ~/Projects
 
 # .config
 touch ~/.hushlogin  # hide "last login"

@@ -2,7 +2,8 @@
 ## PATH env (portable)
 
 #echo $PYTHONPATH
-PYTHONPATH="$PYTHONPATH:${HOME}/iCloud/Projects/Noether/"
+PYTHONPATH="$PYTHONPATH:${HOME}/Projects/Noether/"
+PYTHONPATH="$PYTHONPATH:${HOME}/Projects/pxdlib/"
 export PYTHONPATH
 
 #echo $PATH

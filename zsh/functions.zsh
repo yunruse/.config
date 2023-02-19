@@ -1,42 +1,63 @@
 # Mia yun Ruse's `.config`
-## Aliases and functions
-EDITOR=micro
+## Functions and aliases
+
+
+
+# Editor
+export EDITOR=micro
+export VISUAL=$EDITOR
 alias edit="$EDITOR"
 alias nano="micro"
 
-# cli to gui
+
+# Filesystem
+alias ls="exa -hbF"
+alias f="fzf --preview 'bat --style=numbers --color=always --line-range :100 {} | viu {} | lolcat -f {}'"
+function mkcd { mkdir $1 && cd $1 }
+function mvself {
+	mv "$(pwd)" $*
+	cd .
+}
+
+
+# CLI to GUI
 alias preview="open -a preview"
 alias finder="open -a finder ."
 alias vscode="open -a 'Visual Studio Code' ."
 alias safari="open -a safari"
-
-function zedit {
-  vscode ~/.config/zsh
-  source ~/.zshrc
-}
-alias zclear="clear; zsh ~/.zlogin"
-
-# helpful tools
-export VISUAL="nano"
-alias ls="exa -hbF"
-function mkcd { mkdir $1 && cd $1 }
-alias f="fzf --preview 'bat --style=numbers --color=always --line-range :100 {} | viu {} | lolcat -f {}'"
+alias vlc="open -a vlc"
 
 
 # python
 alias python="python3.11"
 alias pip="python3.11 -m pip"
 function import { python -ic "import $*" }
-function noether { python3 -im noether "$*" }
-function noe {
-  clear
-  pushd ~/iCloud/Projects/Noether >/dev/null
-  python3 tests/auto_catalogue.py
-  gh issue list --milestone v1.0
-  python3 ~/.config/zsh/noether_units.py
+alias noether="python3 -im noether"
+
+
+# Recursion!
+function zedit {
+  nano ~/.config/zsh/functions.zsh
+  source ~/.config/zsh/functions.zsh
 }
 
-# misc
+
+# Dashboard
+function zclear {
+  clear
+  zsh ~/.zlogin $*
+}
+function noe {
+  # Development dashboard for Noether
+  pushd ~/Projects/Noether >/dev/null
+  make type --silent
+  make test --silent 
+  python3 ~/.config/zsh/noether_units.py
+}
+alias dash="zclear -n; noe; cd"
+
+
+# Misc
 function yt {
   pushd ~/Media > /dev/null;
   yt-dlp $*;
