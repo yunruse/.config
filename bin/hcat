@@ -1,17 +1,11 @@
 #!/usr/bin/env python3
-'''
-Horizontally concatenate files.
-
-For viu, figlet, etc it is recommended you use -w inside and out,
-as styling is (currently) not recognised.
-'''
+"Horizontally concatenate files."
 
 import argparse
-from os import popen
 from sys import stdin
 from typing import Iterable, Optional
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument(
     'file', nargs='+',
     help="Accepts - for stdin (noninteractive)")
@@ -30,12 +24,10 @@ parser.add_argument(
 
 def visible_char_count(string: str) -> int:
     '''Number of visible characters in a string, Terminal color codes notwithstanding.'''
-    # This has been tested with `viu`, which generates some long sixel codes,
-    # and some other standard color code too.
-    # Hopefully it caches other codes too!
-    # It does not seem to take extra time.
+    # This has been tested with `viu` and `lolcat`.
+    # Hopefully it catches other fanciful formatting
     ESC = chr(27)
-    ESC_FINISH_COL_CODE = chr(109)  # 'm'
+    ESC_FINISH_COL_CODE = 'm'
     n = 0
     is_visible = 1
     for c in string:
