@@ -26,9 +26,6 @@ except:
     Console = None
 
 
-# TODO: str(Event) and `--no-rich` flag (default if `rich` not found!)
-
-
 @dataclass(frozen=True)
 class Category:
     name: str = ''
@@ -98,7 +95,6 @@ parser.add_argument(
 parser.add_argument(
     '-a', '--all', action='store_true',
     help="Alias for -ncp.")
-
 parser.add_argument(
     '-n', '--number', nargs='?', default=5, const=None, type=int,
     help="Number of dates to display. Provide no number to display all.")
@@ -108,11 +104,12 @@ parser.add_argument(
 parser.add_argument(
     '-p', '--past', action='store_true',
     help="Display past events.")
-
-
+parser.add_argument(
+    '--no-rich', action='store_true',
+    help="Do not display color or styling.")
 parser.add_argument(
     '-d', '--days-until', metavar='NAME',
-    help="Display days until a named event. Exits with code 9 if not found.")
+    help="Display days until a named event, rather than a list. Exits with code 9 if event not found.")
 
 
 if __name__ == '__main__':
@@ -121,10 +118,14 @@ if __name__ == '__main__':
         args.categories = True
         args.past = True
         args.number = None
+    
+    if args.no_rich:
+        Console = None
 
+    _print = print
     def print(*objects):
         if Console is None:
-            print(*objects)
+            _print(*objects)
         else:
             Console().print(*objects, highlight=False)
 
