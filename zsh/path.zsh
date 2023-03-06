@@ -4,6 +4,7 @@
 #echo $PYTHONPATH
 PYTHONPATH="$PYTHONPATH:${HOME}/Projects/Noether/"
 PYTHONPATH="$PYTHONPATH:${HOME}/Projects/pxdlib/"
+PYTHONPATH="$PYTHONPATH:${HOME}/Projects/battery/"
 export PYTHONPATH
 
 #echo $PATH
