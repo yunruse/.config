@@ -6,7 +6,11 @@ from os.path import splitext
 from sys import stderr
 
 import json
-import toml
+try:
+    import toml
+except ImportError:
+    # compatibility for if we don't want to export to toml
+    import tomllib as toml
 
 _exit = exit
 def exit(code: int, reason: str):
@@ -22,9 +26,9 @@ args = parser.parse_args()
 _, iext = splitext(args.ifile)
 _, oext = splitext(args.ofile)
 
-with open(args.ifile) as f:
+with open(args.ifile, 'r') as f:
     if iext == '.json': obj = json.load(f)
-    elif iext == '.toml': obj = toml.load(f)
+    elif iext == '.toml': obj = toml.loads(f.read())
     else: exit(5, f'Unknown input extension {iext!r}')
 
 with open(args.ofile, 'w') as f:
