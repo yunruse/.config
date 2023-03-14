@@ -4,14 +4,17 @@
 
 Hey hi howdy! These are my personal configuration files and bash scripts for the terminal.
 
-It's mostly just so I can track changes and keep `.config` clean (would recommend) but **if anything looks useful please use it!** It's totally public domain, yo.
+Includes shell scripts:
+- `hcat`, `countdown`, `greeting` (see above for them in use!)
+- `json2toml` (convert between formats)
+- `rich` (format text using Python's `rich`)
+- `roll` (quick `d20` roller)
+
+This repo is mostly just so I can track changes and keep `.config` clean (would recommend) but **if anything looks useful please use it!** It's totally public domain, yo.
 
 ## Miscellaneous todo
 
-- [ ] Get `countdown` to use macOS countdown
 - [ ] Use a symlink manager (gnu stow)
-- [ ] Random planets in `.zlogin`!
-- [ ] Autodetect styling in `hcat`
 
 ## Thoughts
 
