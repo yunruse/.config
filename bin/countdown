@@ -105,8 +105,8 @@ parser.add_argument(
     '-c', '--categories', action='store_true',
     help="Sort countdowns by category, then countdown.")
 parser.add_argument(
-    '-p', '--past', action='store_true',
-    help="Display past events.")
+    '-p', '--past', nargs='?', default=0, const=None, type=int, metavar='DAYS',
+    help="Number of days in the past to display. Provide no number to show all past events.")
 parser.add_argument(
     '--no-rich', action='store_true',
     help="Do not display color or styling.")
@@ -119,7 +119,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.all:
         args.categories = True
-        args.past = True
+        args.past = None
         args.number = None
     
     if args.no_rich:
@@ -138,8 +138,9 @@ if __name__ == '__main__':
     today = Date.today()
     events = get_events(args.file)
 
-    if not args.past:
-        events = filter(lambda x: x.date > today, events)
+    if args.past is not None:
+        minim = -args.past - 1
+        events = filter(lambda x: (x.date - today).days > minim, events)
     
     if not args.days_until:
         events = sorted(events, key=lambda x: x.date)[:args.number]

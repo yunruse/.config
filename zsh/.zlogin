@@ -6,7 +6,7 @@ clear
 
 w1=24
 w2=$(bc -e "$COLUMNS - $w1 - 1")
-alias countdown="countdown ~/.config/zsh/calendar.txt"
+alias countdown="countdown ~/.config/zsh/calendar.txt -p 5"
 
 hcat <(
   viu -t -w $w1 ~/.config/zsh/.zlogin.png \
