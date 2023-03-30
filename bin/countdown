@@ -13,6 +13,7 @@ are used to collate and format events.
 '''
 
 from dataclasses import dataclass
+from os import system
 from typing import Generator
 
 from argparse import ArgumentParser
@@ -91,7 +92,9 @@ parser.add_argument(
     help="The file to parse."
     " Each line should take the form 'YYYY Mon DD Eventname'.")
 
-
+parser.add_argument(
+    '-e', '--edit', action='store_true',
+    help="Open the file in $EDITOR. (Useful with an alias!)")
 parser.add_argument(
     '-a', '--all', action='store_true',
     help="Alias for -ncp.")
@@ -121,6 +124,9 @@ if __name__ == '__main__':
     
     if args.no_rich:
         Console = None
+    
+    if args.edit:
+        system(f'$EDITOR "{args.file}"')
 
     _print = print
     def print(*objects):
