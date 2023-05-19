@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 '''
 Countdown date utility.
+Mostly for my own use but feel free to hack around with it.
 
-Requires (atm) `pip install rich`.
+Requires `pip install rich`.
 
-Lines should take the form YYYY Mon DD Eventname.
+Takes some countdown text file with dates of the format
+
+YYYY Mon DD Eventname
 
 Comments of the form
 # Category [richstyle]
-
 are used to collate and format events.
 '''
 
