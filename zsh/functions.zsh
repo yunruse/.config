@@ -61,3 +61,9 @@ function yt {
   yt-dlp $*;
   popd > /dev/null;
 }
+function valeveno {
+	pushd "~/Projects/Dusk\ and\ Dawn/languages" >/dev/null
+    python translate.py valeveno.txt $*
+	popd > /dev/null
+}
+source ~/Projects/transmission-control/aliases.sh

@@ -11,7 +11,7 @@ alias countdown="countdown ~/.config/zsh/calendar.txt -p 5"
 hcat <(
   viu -t -w $w1 ~/.config/zsh/.zlogin.png \
 ) <(\
-  echo "$(greeting): $(countdown -d 'Zelda: Tears of the Kingdom') days!" |\
+  echo "$(countdown -d 'Solar Eclipse') days" |\
   # echo "$(greeting), $(isoweek)" |\
     figlet -k -w$w2 |\
     lolcat -fp 2 \

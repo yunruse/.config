@@ -44,4 +44,5 @@
     "workbench.layoutControl.type": "toggles",
     "workbench.tips.enabled": false,
     "workbench.tree.renderIndentGuides": "always",
+    "workbench.colorTheme": "Default Light Modern",
 }

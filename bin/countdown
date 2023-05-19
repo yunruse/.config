@@ -97,10 +97,10 @@ parser.add_argument(
     help="Open the file in $EDITOR. (Useful with an alias!)")
 parser.add_argument(
     '-a', '--all', action='store_true',
-    help="Alias for -ncp.")
+    help="Show all events.")
 parser.add_argument(
-    '-n', '--number', nargs='?', default=5, const=None, type=int,
-    help="Number of dates to display. Provide no number to display all.")
+    '-n', '--number', default=5, type=int,
+    help="Number of dates to display.")
 parser.add_argument(
     '-c', '--categories', action='store_true',
     help="Sort countdowns by category, then countdown.")
@@ -118,8 +118,6 @@ parser.add_argument(
 if __name__ == '__main__':
     args = parser.parse_args()
     if args.all:
-        args.categories = True
-        args.past = None
         args.number = None
     
     if args.no_rich:
