@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
 '''
 Countdown date utility.
-Mostly for my own use but feel free to hack around with it.
 
-Requires `pip install rich`.
+Mostly for my own use, but feel free to hack around with it!
 
-Takes some countdown text file with dates of the format
+Works well with `pip install rich` for rich text formatting, but it's not necessary.
+
+Takes some countdown text file. I use
+`alias countdown='countdown my_path [my_opts]'` for config.
+
+The countdown file itself has lines of the format:
 
 YYYY Mon DD Eventname
+2023 Jun 03 Example Countdown
 
-Comments of the form
+Comments of the form:
 # Category [richstyle]
-are used to collate and format events.
+# Movies example [bold red]
+# Unformatted example
+
+give categories (and style) to events below them, useful for collation.
 '''
 
 from dataclasses import dataclass
@@ -91,33 +99,40 @@ def get_events(filename: Path) -> Generator[Event, None, None]:
 parser = ArgumentParser()
 parser.add_argument(
     'file',
-    help="The file to parse."
-    " Each line should take the form 'YYYY Mon DD Eventname'.")
+    help="The countdown file.")
 
-parser.add_argument(
-    '-e', '--edit', action='store_true',
-    help="Open the file in $EDITOR. (Useful with an alias!)")
-parser.add_argument(
+_event_filter = parser.add_argument_group("event filter")
+
+_event_filter.add_argument(
     '-a', '--all', action='store_true',
     help="Show all events.")
-parser.add_argument(
+_event_filter.add_argument(
     '-n', '--number', default=5, type=int,
-    help="Number of dates to display.")
-parser.add_argument(
-    '-c', '--categories', action='store_true',
-    help="Sort countdowns by category, then countdown.")
-parser.add_argument(
+    help="Number of events to display.")
+_event_filter.add_argument(
     '-p', '--past', nargs='?', default=0, const=None, type=int, metavar='DAYS',
     help="Number of days in the past to display. Provide no number to show all past events.")
-parser.add_argument(
+
+_display = parser.add_argument_group("display mode")
+_event_filter.add_argument(
     '--no-rich', action='store_true',
     help="Do not display color or styling.")
-parser.add_argument(
+_display.add_argument(
+    '-c', '--categories', action='store_true',
+    help="Show countdowns by category.")
+_display.add_argument(
     '-d', '--days-until', metavar='NAME',
-    help="Display days until a named event, rather than a list. Exits with code 9 if event not found.")
+    help="Return only the countdown number to a specific event. Exits with code 9 if event not found.")
+
+editing = parser.add_argument_group("file")
+
+editing.add_argument(
+    '-e', '--edit', action='store_true',
+    help="Open the file in $EDITOR.")
 
 
 if __name__ == '__main__':
+    # post-process args
     args = parser.parse_args()
     if args.all:
         args.number = None
@@ -127,6 +142,8 @@ if __name__ == '__main__':
     
     if args.edit:
         system(f'$EDITOR "{args.file}"')
+    
+    # display
 
     _print = print
     def print(*objects):
@@ -134,27 +151,33 @@ if __name__ == '__main__':
             _print(*objects)
         else:
             Console().print(*objects, highlight=False)
+    
+    # get events
 
     today = Date.today()
     events = get_events(args.file)
-
-    if args.past is not None:
-        minim = -args.past - 1
-        events = filter(lambda x: (x.date - today).days > minim, events)
     
-    if not args.days_until:
-        events = sorted(events, key=lambda x: x.date)[:args.number]
+    # handle specific countdown
 
     if args.days_until is not None:
         for e in events:
             if e.name == args.days_until:
                 print(e.days_until())
-                break
+                exit(0)
         else:
             exit(9)
+    
+    # filter
 
+    if args.past is not None:
+        minim = -args.past - 1
+        events = filter(lambda x: (x.date - today).days > minim, events)
 
-    elif args.categories:
+    events = sorted(events, key=lambda x: x.date)[:args.number]
+    
+    # display
+
+    if args.categories:
         cats: dict[Category, list[Event]] = dict()
         for e in events:
             cats.setdefault(e.category, [])
@@ -164,7 +187,6 @@ if __name__ == '__main__':
             print(c)
             for e in es:
                 print(e)
-
     else:
         for e in events:
             print(e)
