@@ -1,7 +1,8 @@
 # Mia yun Ruse's `.config`
 ## .gitignore
 
-# Junk
+# Cache
+*.pyc
 .DS_Store
 
 # This isn't what .config is for you fools! Read XDG! D:
