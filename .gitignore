@@ -15,7 +15,7 @@ micro/buffers/history
 
 # Device-only
 ssh/
-device_bin/
+bin_device/
 zsh/path_device.zsh
 zsh/calendar.txt
 gh/hosts.yml
