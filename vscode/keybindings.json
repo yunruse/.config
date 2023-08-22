@@ -203,7 +203,7 @@
         "command": "workbench.action.toggleActivityBarVisibility"
     },
     {
-        "key": "cmd+l",
+        "key": "cmd+b",
         "command": "workbench.action.toggleAuxiliaryBar"
     },
     {
@@ -243,5 +243,17 @@
         "key": "ctrl+`",
         "command": "-workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
+    },
+    {
+        "key": "cmd+0",
+        "command": "-workbench.action.focusSideBar"
+    },
+    {
+        "key": "cmd+l",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     },
 ]
