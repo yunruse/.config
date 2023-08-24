@@ -24,10 +24,11 @@ give categories (and style) to events below them, useful for collation.
 
 from dataclasses import dataclass
 from os import system
+import re
 from typing import Generator
 
 from argparse import ArgumentParser
-from datetime import date as Date, datetime as Datetime
+from datetime import date as Date, datetime as Datetime, timedelta as Timedelta
 from pathlib import Path
 from sys import exit
 
@@ -76,10 +77,14 @@ class Event:
         return f'[bold cyan]{self.days_until():>3}[/] [italic {self.category.style}]{self.name}[/]'
 
 
+EVENT = re.compile(r"(?:(\d{2,4}) )?([A-Za-z]{3}) (\d\d) (.+)")
+
 def get_events(filename: Path) -> Generator[Event, None, None]:
+    today = Datetime.today()
+
     with open(filename) as f:
         category = Category()
-        for line in f:
+        for i, line in enumerate(f, start=1):
             line = line.strip()
             if not line:
                 continue
@@ -89,11 +94,15 @@ def get_events(filename: Path) -> Generator[Event, None, None]:
                     category = Category.from_string(line.removeprefix('#'))
                 continue
 
-            y, m, d, name = line.split(' ', 3)
-            yield Event(
-                Datetime.strptime(f'{y} {m} {d}', '%Y %b %d').date(),
-                name,
-                category)
+            match = EVENT.match(line)
+            if not match:
+                parser.exit(2, f"Error! {filename}:{i} is not a well-formed date:\n{line}\n")
+
+            y, m, d, name = match.groups()
+            y = y or today.year  # TODO: shunt to next year? use -p maybe?
+            dt = Datetime.strptime(f'{y} {m} {d}', '%Y %b %d')
+
+            yield Event(dt.date(), name, category)
 
 
 parser = ArgumentParser()
@@ -136,6 +145,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.all:
         args.number = None
+        args.past = None
     
     if args.no_rich:
         Console = None
