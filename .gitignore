@@ -1,21 +1,23 @@
 # Mia yun Ruse's `.config`
 ## .gitignore
 
-# Cache
+# Cruft
 *.pyc
 .DS_Store
 
-# This isn't what .config is for you fools! Read XDG! D:
+# Cache, because SOME people don't use XDG to its fullest :<
 vscode/workspaceStorage
 vscode/globalStorage
 vscode/History
 vscode/sync
+micro/buffers
+micro/backup
 
-micro/buffers/history
-
-# Device-only
+# Personal stuff and private keys
 ssh/
+gh/hosts.yml
+zsh/calendar.txt
+
+# Device-specific
 bin_device/
 zsh/path_device.zsh
-zsh/calendar.txt
-gh/hosts.yml
