@@ -11,7 +11,7 @@ alias countdown="countdown ~/.config/zsh/calendar.txt -n10"
 hcat <(
   viu -t -w $w1 ~/.config/zsh/.zlogin.png \
 ) <(\
-  echo "$(countdown -d 'Draft 1 deadline')" days |\
+  echo $(countdown -D 'Book progress') days |\
     figlet -k -w$w2 |\
     lolcat -fp 2 \
 ) -w $w1 $w2

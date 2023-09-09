@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+
+# List all events. Show the most recent in the top
+# Toggles can be set at CLI but changed in a little prefs sheet also
+# 
+
+from argparse import Namespace
+
+import rumps
+
+from countdown import parser, process_events, Category, Event
+
+class CountdownMenubar(rumps.App):
+    args: Namespace
+    events: list[Event]
+    items: list[rumps.MenuItem]
+
+    def __init__(self, args: Namespace):
+        self.args = args
+        self.events = []
+        self.items = []
+        super().__init__('Countdown')
+
+        self.update_entries()
+
+    @rumps.clicked("Reload")
+    @rumps.timer(3600)
+    def update_entries(self):
+        events = process_events(self.args)
+        
+        assert not isinstance(events, dict)
+
+        if isinstance(events, Event):
+            events = [events]
+        if not events:
+            events = [None]
+
+        first, *remaining = events
+
+        if first:
+            self.title = str(first)
+        else:
+            self.title = 'No events!'
+        
+        self.items.clear()
+        for e in remaining:
+            item = rumps.MenuItem(str(e))
+            self.items.append(item)
+            self._menu.add(item)
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    CountdownMenubar(args).run()

@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+'''
+Countdown date utility.
+
+Mostly for my own use, but feel free to hack around with it!
+
+Works well with `pip install rich` for rich text formatting, but it's not necessary.
+
+Takes some countdown text file. I use
+`alias countdown='countdown my_path [my_opts]'` for config.
+
+The countdown file itself has lines of the format:
+
+YYYY Mon DD Eventname
+2023 Jun 03 Example Countdown
+
+Comments of the form:
+# Category [richstyle]
+# Movies example [bold red]
+# Unformatted example
+
+give categories (and style) to events below them, useful for collation.
+'''
+
+from os import system
+from argparse import ArgumentParser
+from datetime import date as Date
+from sys import exit
+
+try:
+    from rich.console import Console
+except:
+    Console = None
+
+from countdown import parser, process_events, Category, Event
+
+_editing = parser.add_argument_group("file")
+
+_editing.add_argument(
+    '-e', '--edit', action='store_true',
+    help="Open the file in $EDITOR.")
+
+if __name__ == '__main__':
+    # post-process args
+    args = parser.parse_args()
+
+    if args.no_rich:
+        Console = None
+    if args.edit:
+        system(f'$EDITOR "{args.file}"')
+    
+    # display
+
+    _print = print
+    def print(*objects):
+        if Console is None:
+            _print(*objects)
+        else:
+            Console().print(*objects, highlight=False)
+
+    events  = process_events(args)
+
+    if isinstance(events, Event):
+        print(events.days_until())
+    
+    if isinstance(events, dict):
+        events: dict[Category, list[Event]]
+        for c, es in events.items():
+            print(c)
+            for e in es:
+                print(e)
+
+    if isinstance(events, list):
+        for e in events:
+            print(e)

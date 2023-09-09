@@ -1,41 +1,12 @@
 #!/usr/bin/env python3
-'''
-Countdown date utility.
 
-Mostly for my own use, but feel free to hack around with it!
-
-Works well with `pip install rich` for rich text formatting, but it's not necessary.
-
-Takes some countdown text file. I use
-`alias countdown='countdown my_path [my_opts]'` for config.
-
-The countdown file itself has lines of the format:
-
-YYYY Mon DD Eventname
-2023 Jun 03 Example Countdown
-
-Comments of the form:
-# Category [richstyle]
-# Movies example [bold red]
-# Unformatted example
-
-give categories (and style) to events below them, useful for collation.
-'''
-
+from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
-from os import system
 import re
 from typing import Generator
 
-from argparse import ArgumentParser
-from datetime import date as Date, datetime as Datetime, timedelta as Timedelta
+from datetime import date as Date, datetime as Datetime
 from pathlib import Path
-from sys import exit
-
-try:
-    from rich.console import Console
-except:
-    Console = None
 
 
 @dataclass(frozen=True)
@@ -66,9 +37,8 @@ class Event:
     name: str
     category: Category
 
-    def days_until(self):
-        today = Date.today()
-        return (e.date - today).days
+    def days_until(self, date: Date | None = None):
+        return (self.date - (date or Date.today()) ).days
 
     def __str__(self):
         return f'{self.days_until():>3} {self.name}'
@@ -77,9 +47,12 @@ class Event:
         return f'[bold cyan]{self.days_until():>3}[/] [italic {self.category.style}]{self.name}[/]'
 
 
+# TODO: extract common methods into a class here?
+# for EventCollection
+
 EVENT = re.compile(r"(?:(\d{2,4}) )?([A-Za-z]{3}) (\d\d) (.+)")
 
-def get_events(filename: Path) -> Generator[Event, None, None]:
+def _get_events(filename: Path) -> Generator[Event, None, None]:
     today = Datetime.today()
 
     with open(filename) as f:
@@ -105,98 +78,94 @@ def get_events(filename: Path) -> Generator[Event, None, None]:
             yield Event(dt.date(), name, category)
 
 
+
 parser = ArgumentParser()
 parser.add_argument(
     'file',
     help="The countdown file.")
 
+
 _event_filter = parser.add_argument_group("event filter")
 
 _event_filter.add_argument(
     '-a', '--all', action='store_true',
-    help="Show all events.")
+    help="Show all events. Alias for -np.")
 _event_filter.add_argument(
-    '-n', '--number', default=5, type=int,
+    '-n', '--number',
+    nargs='?', type=int, default=5, const=None,
     help="Number of events to display.")
 _event_filter.add_argument(
-    '-p', '--past', nargs='?', default=0, const=None, type=int, metavar='DAYS',
+    '-p', '--past', metavar='DAYS',
+    nargs='?', type=int, default=0, const=None,
     help="Number of days in the past to display. Provide no number to show all past events.")
+# _event_filter.add_argument(
+#     '-C', '--category', metavar='CATEGORY',
+#     help="Only show")
 
 _display = parser.add_argument_group("display mode")
 _event_filter.add_argument(
     '--no-rich', action='store_true',
     help="Do not display color or styling.")
 _display.add_argument(
-    '-c', '--categories', action='store_true',
+    '-c', '--show-categories', action='store_true',
     help="Show countdowns by category.")
-_display.add_argument(
+
+_single = parser.add_argument_group("single countdown")
+_single.add_argument(
     '-d', '--days-until', metavar='NAME',
-    help="Return only the countdown number to a specific event. Exits with code 9 if event not found.")
+    help="Return only the countdown days to a specific event. Exits with code 9 if event not found.")
+_single.add_argument(
+    '-D', '--days-until-category', metavar='CATEGORY',
+    help="Return the countdown days (a la -d) to the next event in a given category."
+)
+# TODO: implement -C
+# add --days-only (no names)
+# and -1 (show only the first item)
+# change -d an alias of `-1 --days-only``
+# make -D an alias for -1C
 
-editing = parser.add_argument_group("file")
-
-editing.add_argument(
-    '-e', '--edit', action='store_true',
-    help="Open the file in $EDITOR.")
-
-
-if __name__ == '__main__':
-    # post-process args
-    args = parser.parse_args()
+def process_events(args: Namespace) -> Event | list[Event] | dict[Category, list[Event]]:
     if args.all:
         args.number = None
         args.past = None
     
-    if args.no_rich:
-        Console = None
-    
-    if args.edit:
-        system(f'$EDITOR "{args.file}"')
-    
-    # display
-
-    _print = print
-    def print(*objects):
-        if Console is None:
-            _print(*objects)
-        else:
-            Console().print(*objects, highlight=False)
-    
     # get events
 
     today = Date.today()
-    events = get_events(args.file)
+    events = _get_events(args.file)
     
-    # handle specific countdown
+    # specific countdown
 
     if args.days_until is not None:
         for e in events:
             if e.name == args.days_until:
-                print(e.days_until())
-                exit(0)
+                return e
         else:
             exit(9)
-    
+    if args.days_until_category is not None:
+        events = filter(lambda e: e.category.name == args.days_until_category, events)
+        events = sorted(events, key=lambda e: e.date)
+        if not events:  # does this work?
+            exit(9)
+        e: Event = next(iter(events))
+        return e
+
     # filter
 
     if args.past is not None:
         minim = -args.past - 1
-        events = filter(lambda x: (x.date - today).days > minim, events)
+        events = filter(lambda e: (e.date - today).days > minim, events)
 
-    events = sorted(events, key=lambda x: x.date)[:args.number]
+    events = sorted(events, key=lambda e: e.date)
+    events = events[:args.number]
     
-    # display
+    # categories
 
-    if args.categories:
+    if args.show_categories:
         cats: dict[Category, list[Event]] = dict()
         for e in events:
             cats.setdefault(e.category, [])
             cats[e.category].append(e)
-
-        for c, es in cats.items():
-            print(c)
-            for e in es:
-                print(e)
-    else:
-        for e in events:
-            print(e)
+        return cats
+    
+    return events
