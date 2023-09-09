@@ -5,13 +5,15 @@
 *.pyc
 .DS_Store
 
-# Cache, because SOME people don't use XDG to its fullest :<
+# Cache, because some apps use .config incorrectly :<
 vscode/workspaceStorage
 vscode/globalStorage
 vscode/History
 vscode/sync
 micro/buffers
 micro/backup
+Sonarr/
+
 
 # Personal stuff and private keys
 ssh/
