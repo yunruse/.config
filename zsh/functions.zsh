@@ -11,7 +11,8 @@ alias nano="micro"
 
 
 # Filesystem
-alias ls="exa -hbF"
+alias ls="eza -hbF --git --no-user -s type"
+alias l="ls -l"
 alias f="fzf --preview 'bat --style=numbers --color=always --line-range :100 {} | viu {} | lolcat -f {}'"
 function mkcd { mkdir $1 && cd $1 }
 function mvself {
