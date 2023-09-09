@@ -57,10 +57,13 @@ function noe {
 
 
 # Misc
-function yt {
-  pushd ~/Media > /dev/null;
-  yt-dlp $*;
-  popd > /dev/null;
+function duration-dir {
+  # List total duration of all videos (recursive) in this directory
+  # https://news.ycombinator.com/item?id=37384212
+  find . -type f -print0 | \
+      xargs -0 -P 10 -I {} ffprobe -v quiet -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 {} | \
+      awk '{s += $1} END {printf "%dh%.2dm%.2ds\n", s/3600, s%3600/60, s%3600%60}'
 }
+
 alias valeveno="~/Projects/duskbreak/languages/translate"
 source ~/Projects/transmission-control/aliases.sh
