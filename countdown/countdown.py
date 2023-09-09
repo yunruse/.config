@@ -1,5 +1,28 @@
 #!/usr/bin/env python3
 
+'''
+Countdown date utility.
+
+Mostly for my own use, but feel free to hack around with it!
+
+Works well with `pip install rich` for rich text formatting, but it's not necessary.
+
+Takes some countdown text file. I use
+`alias countdown='countdown my_path [my_opts]'` for config.
+
+The countdown file itself has lines of the format:
+
+YYYY Mon DD Eventname
+2023 Jun 03 Example Countdown
+
+Comments of the form:
+# Category [richstyle]
+# Movies example [bold red]
+# Unformatted example
+
+give categories (and style) to events below them, useful for collation.
+'''
+
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
 import re
@@ -78,53 +101,61 @@ def _get_events(filename: Path) -> Generator[Event, None, None]:
             yield Event(dt.date(), name, category)
 
 
-
-parser = ArgumentParser()
+parser = ArgumentParser(description=__doc__)
 parser.add_argument(
     'file',
     help="The countdown file.")
 
 
-_event_filter = parser.add_argument_group("event filter")
-
-_event_filter.add_argument(
+_filter_num = parser.add_argument_group(
+    "Filter by date and number")
+_filter_num.add_argument(
     '-a', '--all', action='store_true',
-    help="Show all events. Alias for -np.")
-_event_filter.add_argument(
-    '-n', '--number',
+    help="Show all events including those in the past. Alias for -N -p.")
+_filter_num.add_argument(
+    '-1', '--first', action='store_true',
+    help='Show the first event. Alias for -N1 -p0.')
+_filter_num.add_argument(
+    '-N', '--number',
     nargs='?', type=int, default=5, const=None,
     help="Number of events to display.")
-_event_filter.add_argument(
+_filter_num.add_argument(
     '-p', '--past', metavar='DAYS',
     nargs='?', type=int, default=0, const=None,
     help="Number of days in the past to display. Provide no number to show all past events.")
-# _event_filter.add_argument(
-#     '-C', '--category', metavar='CATEGORY',
-#     help="Only show")
 
-_display = parser.add_argument_group("display mode")
-_event_filter.add_argument(
-    '--no-rich', action='store_true',
-    help="Do not display color or styling.")
+
+_filter_name = parser.add_argument_group(
+    "Filter by name",
+    "Exits with code 9 if no entries are found.")
+_filter_name.add_argument(
+    '-C', '--category', metavar='CATEGORY',
+    help="Only show items in a given category.")
+_filter_name.add_argument(
+    '-n', '--name', metavar='NAME',
+    help="Only show entries with this name.")
+
+
+_display = parser.add_argument_group(
+    "Display")
 _display.add_argument(
     '-c', '--show-categories', action='store_true',
     help="Show countdowns by category.")
+_display.add_argument(
+    '-d', '--days-until', action='store_true',
+    help="Only show the days until the given date.")
 
-_single = parser.add_argument_group("single countdown")
-_single.add_argument(
-    '-d', '--days-until', metavar='NAME',
-    help="Return only the countdown days to a specific event. Exits with code 9 if event not found.")
-_single.add_argument(
-    '-D', '--days-until-category', metavar='CATEGORY',
-    help="Return the countdown days (a la -d) to the next event in a given category."
-)
 # TODO: implement -C
 # add --days-only (no names)
 # and -1 (show only the first item)
 # change -d an alias of `-1 --days-only``
 # make -D an alias for -1C
 
-def process_events(args: Namespace) -> Event | list[Event] | dict[Category, list[Event]]:
+Events = list[Event]
+
+def process_events(args: Namespace) -> Events | dict[Category, Events]:
+    if args.first:
+        args.number = 1
     if args.all:
         args.number = None
         args.past = None
@@ -134,23 +165,13 @@ def process_events(args: Namespace) -> Event | list[Event] | dict[Category, list
     today = Date.today()
     events = _get_events(args.file)
     
-    # specific countdown
+    # name filters
+    if args.name is not None:
+        events = filter(lambda e: e.name == args.name, events)
+    if args.category is not None:
+        events = filter(lambda e: e.category.name == args.category, events)
 
-    if args.days_until is not None:
-        for e in events:
-            if e.name == args.days_until:
-                return e
-        else:
-            exit(9)
-    if args.days_until_category is not None:
-        events = filter(lambda e: e.category.name == args.days_until_category, events)
-        events = sorted(events, key=lambda e: e.date)
-        if not events:  # does this work?
-            exit(9)
-        e: Event = next(iter(events))
-        return e
-
-    # filter
+    # date filters
 
     if args.past is not None:
         minim = -args.past - 1

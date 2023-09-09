@@ -55,6 +55,11 @@ function noe {
   python3 ~/.config/zsh/noether_units.py
 }
 
+# Menubar
+function start-countdown-menubar {
+  countdown-menubar ~/.config/zsh/calendar.txt -aC 'Book progress' &
+}
+
 
 # Misc
 function duration-dir {
