@@ -9,10 +9,10 @@ def roll(expr: str):
     n = '([\d_]+)'
     expr = re.sub(rf'{n}d{n}d{n}', r'dice(\1, \2, \3)', expr)
     expr = re.sub(rf'{n}d{n}',     r'dice(\1, \2)',     expr)
-    expr = re.sub(   rf'd{n}',     r'dice(1, \1)',     expr)
+    expr = re.sub(   rf'd{n}',     r'dice(1, \1)',      expr)
     return eval(expr, {}, {'dice': dice} | math.__dict__)
 if __name__ == '__main__':
-    from argparse import ArgumentParser
-    parser = ArgumentParser(description=__doc__)
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('expression', nargs='*', help='Dice expression, eg 3d40 * 1d2.')
     print(roll(' '.join(parser.parse_args().expression)))
