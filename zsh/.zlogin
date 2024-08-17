@@ -11,7 +11,7 @@ w2=$(bc -e "$COLUMNS - $w1 - 1")
 alias countdown="~/Projects/countdown/countdown ~/.config/zsh/calendar.txt -N10 --clean"
 
 hcat <(
-  viu -t -w $w1 ~/.config/zsh/.zlogin.png \
+	viu -t -w $w1 ~/.config/zsh/zelda.png \
 ) <(\
     echo Keep writing! |\
 #  echo $(countdown -1dC 'Book progress') days |\
