@@ -30,10 +30,11 @@ alias vlc="open -a vlc"
 
 
 # python
-alias python="python3.11"
-alias pip="python3.11 -m pip"
+alias python="python3.12"
+alias python3="python3.12"
+function pip { python -m pip $* --break-system-packages }
 function import { python -ic "import $*" }
-alias noether="python3 -im noether"
+alias noether="python -im noether"
 
 
 # Recursion!
