@@ -6,7 +6,7 @@ import re
 def dice(N: int, sides: int, drop: int = 0):
     return sum(sorted(random.randint(1, sides) for _ in range(N))[:N-drop])
 def roll(expr: str):
-    n = '([\d_]+)'
+    n = '([\\d_]+)'
     expr = re.sub(rf'{n}d{n}d{n}', r'dice(\1, \2, \3)', expr)
     expr = re.sub(rf'{n}d{n}',     r'dice(\1, \2)',     expr)
     expr = re.sub(   rf'd{n}',     r'dice(1, \1)',      expr)
