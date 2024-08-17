@@ -1,11 +1,7 @@
 # Mia yun Ruse's `.config`
 ## PATH env (portable)
 
-#echo $PYTHONPATH
-PYTHONPATH="$PYTHONPATH:${HOME}/Projects/Noether/"
-PYTHONPATH="$PYTHONPATH:${HOME}/Projects/pxdlib/"
-PYTHONPATH="$PYTHONPATH:${HOME}/Projects/battery/"
-export PYTHONPATH
+# cd ~/Python/3.12/lib/python/site-packages
 
 #echo $PATH
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"  # this is the default
@@ -14,3 +10,4 @@ PATH="$PATH:${HOME}/.config/bin:${HOME}/.config/bin_device"
 PATH="$PATH:${HOME}/.config/countdown"
 export PATH
 
+export MATPLOTLIBRC="${HOME}/.config/matplotlib/matplotlibrc"

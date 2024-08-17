@@ -1,5 +1,5 @@
 # Mia yun Ruse's `.config`
-## Setup script
+## Setup script (macOS)
 
 # hide "last login"
 touch ~/.hushlogin
@@ -10,8 +10,11 @@ ln -fs ~/iCloud/Projects ~/Projects
 
 # .config symlinks
 
-# TODO: invert these for portability - .config is your source of truth!
 ln -fs ~/.config/zsh/.zlogin ~/.zlogin
 ln -fs ~/.config/zsh/.zshrc ~/.zshrc
 ln -fs ~/.config/ssh ~/.ssh
 ln -fs ~/.config/vscode ~/Library/Application Support/Code/User
+
+# macOS defaults
+# always open TextEdit in new file
+defaults write com.apple.TextEdit NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false

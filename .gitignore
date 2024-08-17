@@ -23,3 +23,4 @@ zsh/calendar.txt
 # Device-specific
 bin_device/
 zsh/path_device.zsh
+matplotlib/fontlist-v330.json
