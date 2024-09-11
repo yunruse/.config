@@ -1,7 +1,9 @@
 # Mia yun Ruse's `.config`
 ## PATH env (portable)
 
-# cd ~/Python/3.12/lib/python/site-packages
+# Looking for Python pathing?
+# I put my .pth files in:
+# cd ~/Library/Python/3.12/lib/python/site-packages
 
 #echo $PATH
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"  # this is the default
