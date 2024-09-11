@@ -4,25 +4,15 @@
 # go away, "last login" message
 clear
 
-# TODO: Truncate the countdown based on terminal height!
-
-w1=24
+w1=25
 w2=$(bc -e "$COLUMNS - $w1 - 1")
-alias countdown="~/Projects/countdown/countdown ~/.config/zsh/calendar.txt -N10"
-
 hcat <(
-	viu -t -w $w1 ~/.config/zsh/zelda.png \
+	viu -t -w $w1 ~/.config/zsh/zelda2.png \
 ) <(\
-#	python3.12 -c 'from datetime import date;print((date(2024, 9, 26) - date.today()).days, "days")' |\
 	echo "enjoy ur" $(greeting) |\
-#	echo $(countdown -1dC 'Book progress') days
-
-
 	figlet -k -w$w2 |\
 	lolcat -fp 0.6 \
 ) -w $w1 $w2 --sep " "
 
+alias countdown="~/Projects/countdown/countdown ~/.config/zsh/calendar.txt -N10"
 countdown $*
-
-# unset w1
-# unset w2
