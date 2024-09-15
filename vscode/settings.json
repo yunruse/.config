@@ -50,7 +50,7 @@
     "lldb.launch.expressions": "native",
     "r.rpath.mac": "/usr/local/bin/r",
     "python.createEnvironment.trigger": "off",
-    "workbench.activityBar.location": "top",
+    "workbench.activityBar.location": "hidden",
     "terminal.integrated.gpuAcceleration": "on",
     "terminal.integrated.enableImages": true,
 }
