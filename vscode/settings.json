@@ -50,7 +50,9 @@
     "lldb.launch.expressions": "native",
     "r.rpath.mac": "/usr/local/bin/r",
     "python.createEnvironment.trigger": "off",
-    "workbench.activityBar.location": "hidden",
+    "workbench.activityBar.location": "top",
     "terminal.integrated.gpuAcceleration": "on",
     "terminal.integrated.enableImages": true,
+    "git.openRepositoryInParentFolders": "never",
+    "lldb.suppressUpdateNotifications": true,
 }
