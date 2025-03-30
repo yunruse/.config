@@ -1,4 +1,5 @@
 {
+    // editor
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "editor.minimap.size": "fill",
@@ -7,35 +8,25 @@
     "editor.scrollbar.verticalScrollbarSize": 20,
     "editor.stickyScroll.enabled": true,
     "editor.wordWrap": "on",
+    "editor.inlineSuggest.enabled": false,
+
+    // files
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.openEditors.visible": 0,
-    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "explorer.confirmPasteNative": false,
+    "files.exclude": {
+        "**/__pycache__": true
+    },
+
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 200,
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "git.timeline.showUncommitted": true,
-    "json.format.enable": false,
-    "jupyter.askForKernelRestart": false,
-    "lammps.AutoComplete.Setting": "None",
-    "liveshare.showInStatusBar": "whileCollaborating",
-    "Lua.telemetry.enable": false,
-    "notebook.cellToolbarVisibility": "hover",
-    "notebook.insertToolbarLocation": "betweenCells",
-    "notebook.showCellStatusBar": "visibleAfterExecute",
-    "problems.showCurrentInStatus": true,
-    "python.defaultInterpreterPath": "/usr/local/bin/python3.12",
-    "python.interpreter.infoVisibility": "never",
-    "python.testing.autoTestDiscoverOnSaveEnabled": false,
-    "settingsSync.ignoredExtensions": [],
-    "telemetry.telemetryLevel": "error",
-    "terminal.integrated.bellDuration": 10000,
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.enableMultiLinePasteWarning": false,
+
+    // window
     "window.autoDetectColorScheme": true,
     "window.commandCenter": true,
+    "workbench.activityBar.location": "top",
+
     "workbench.editor.decorations.colors": false,
     "workbench.layoutControl.enabled": false,
     "workbench.layoutControl.type": "toggles",
@@ -43,16 +34,75 @@
     "workbench.tree.renderIndentGuides": "always",
     "workbench.sideBar.location": "right",
     "workbench.editor.empty.hint": "hidden",
-    "editor.inlineSuggest.enabled": false,
+
     "window.zoomLevel": -1,
     "workbench.iconTheme": "catppuccin-frappe",
+
+    // git
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.timeline.showUncommitted": true,
+    "git.openRepositoryInParentFolders": "never",
+    
+    // cloud stuff
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "settingsSync.ignoredExtensions": [],
+    "telemetry.telemetryLevel": "off",
+
+    // terminal    
+    "problems.showCurrentInStatus": true,
+    "terminal.integrated.bellDuration": 10000,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.enableImages": true,
+    
+    
+    // Language-specific stuff
+    "mermaid-editor.maxEdges": 1000,
+    "notebook.cellToolbarVisibility": "hover",
+    "notebook.insertToolbarLocation": "betweenCells",
+    "notebook.output.textLineLimit": 80,
+    "notebook.showCellStatusBar": "visibleAfterExecute",
+    "jupyter.askForKernelRestart": false,
+
+    "[tsv]": {
+        "editor.insertSpaces": false,
+    },
+
+    "[json]": {
+        "editor.defaultFormatter": "Meezilla.json"
+    },
+
+    "python.createEnvironment.trigger": "off",
+    "python.defaultInterpreterPath": "/usr/local/bin/python3.12",
+    "python.interpreter.infoVisibility": "never",
+    "python.testing.autoTestDiscoverOnSaveEnabled": false,
+
+    "python.languageServer": "Pylance",
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.importFormat": "relative",
+    "python.analysis.supportDocstringTemplate": true,
+    "python.analysis.typeEvaluation.strictDictionaryInference": true,
+    "python.analysis.typeEvaluation.strictListInference": true,
+    "python.analysis.typeEvaluation.strictSetInference": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "autopep8.importStrategy": "fromEnvironment",
+
+    "lammps.AutoComplete.Setting": "None",
+    "Lua.telemetry.enable": false,
+    "json.format.enable": false,
+    "r.rpath.mac": "/usr/local/bin/r",
+
+    // lldb
     "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
     "lldb.launch.expressions": "native",
-    "r.rpath.mac": "/usr/local/bin/r",
-    "python.createEnvironment.trigger": "off",
-    "workbench.activityBar.location": "top",
-    "terminal.integrated.gpuAcceleration": "on",
-    "terminal.integrated.enableImages": true,
-    "git.openRepositoryInParentFolders": "never",
     "lldb.suppressUpdateNotifications": true,
+
+    // extensions
+    "vscode-pets.petColor": "green",
+    "vscode-pets.throwBallWithMouse": true,
+    "vscode-pets.petSize": "medium",
+
+    // new settings hot and fresh off the GUI
+    "chat.commandCenter.enabled": false,
 }
