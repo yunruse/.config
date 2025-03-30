@@ -1,0 +1,33 @@
+#!/bin/bash
+
+running=$(osascript -e 'tell application "System Events" to get bundle identifier of (every process whose background only is false)' | sed 's/, /\n/g' | sort)
+docked=$(defaults read com.apple.dock persistent-apps | grep 'bundle-identifier' | cut -d '"' -f4 | sort)
+
+undocked_running=$(comm -13 <(echo "$docked") <(echo "$running"))
+for id in $undocked_running; do
+	echo $id
+done
+osascript -e "on run argv
+    repeat with appID in argv
+        try
+            tell application id appID
+                quit
+            end tell
+        end try
+    end repeat
+end run" $undocked_running
+
+# TODO: change behaviour, eg `quit` to:
+
+# QUIT_UNSAVED=$(cat <<EOF
+#     set hasUnsavedChanges to false
+#     repeat with w in (windows)
+#         if (modified of w) then
+#             set hasUnsavedChanges to true
+#             exit repeat
+#         end if
+#     end repeat
+#     if not hasUnsavedChanges then
+#         quit
+#     end if
+# EOF
