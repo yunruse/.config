@@ -40,12 +40,17 @@ alias vscode="open -a 'Visual Studio Code' ."
 alias safari="open -a safari"
 alias vlc="open -a vlc"
 
+function menubar {
+	defaults write $(osascript -e "id of app \"$1\"") AppleMenuBarVisibleInFullscreen -bool $2
+}
+
 
 # python
 alias python="python3.12"
 alias python3="python3.12"
-function pip { python -m pip $* --break-system-packages }
 function import { python -ic "import $*" }
+function from { python -ic "from $*"}
+function pyprint {
+	python -c "print($*)" | tee /dev/stderr | perl -pe 'chomp if eof' | pbcopy
+}
 alias noether="python -im noether"
-
-
