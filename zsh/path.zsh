@@ -1,9 +1,8 @@
 # Mia yun Ruse's `.config`
-## PATH env (portable)
+## PATH: environment (portable)
 
 # Looking for Python pathing?
-# I put my .pth files in:
-# cd ~/Library/Python/3.12/lib/python/site-packages
+alias pypath="nano ~/Library/Python/3.12/lib/python/site-packages/yunruse.pth"
 
 #echo $PATH
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"  # this is the default
