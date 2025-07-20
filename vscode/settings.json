@@ -105,4 +105,5 @@
 
     // new settings hot and fresh off the GUI
     "chat.commandCenter.enabled": false,
+    "css.format.enable": false,
 }
