@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python3.12
 "Outputs stdin in a Rich API style."
 from argparse import ArgumentParser
 from rich.console import Console
@@ -7,7 +7,7 @@ from sys import stdin
 parser = ArgumentParser(description=__doc__)
 parser.add_argument('style', nargs='*', help="Text style to pass to rich.")
 args = parser.parse_args()
-c = Console(style=' '.join(args.style))
+c = Console(style=' '.join(args.style or []))
 
 for line in stdin.readlines():
     c.out(line, end='', highlight=False)
