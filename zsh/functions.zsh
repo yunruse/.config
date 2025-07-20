@@ -27,9 +27,14 @@ function mvself {
 	cd .
 }
 
-function transmog {
+# ffmpeg
+
+function ffmpeg-mov-mp4 {
 	ffmpeg -i ~/Downloads/$1.mov ~/Downloads/$1.mp4
 	rm ~/Downloads/$1.mov
+}
+function ffmpeg-merge-img {
+	ffmpeg -loop 1 -i $1 -i $2 -shortest $3
 }
 
 
@@ -41,7 +46,12 @@ alias safari="open -a safari"
 alias vlc="open -a vlc"
 
 function menubar {
-	defaults write $(osascript -e "id of app \"$1\"") AppleMenuBarVisibleInFullscreen -bool $2
+	ID=$(osascript -e "id of app \"$1\"")
+	if (($# > 1)); then
+		defaults write $ID AppleMenuBarVisibleInFullscreen -bool $2
+	else
+		defaults read $ID AppleMenuBarVisibleInFullscreen
+	fi
 }
 
 
