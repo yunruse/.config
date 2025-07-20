@@ -3,10 +3,17 @@
 running=$(osascript -e 'tell application "System Events" to get bundle identifier of (every process whose background only is false)' | sed 's/, /\n/g' | sort)
 docked=$(defaults read com.apple.dock persistent-apps | grep 'bundle-identifier' | cut -d '"' -f4 | sort)
 
-undocked_running=$(comm -13 <(echo "$docked") <(echo "$running"))
-for id in $undocked_running; do
-	echo $id
-done
+# echo "- RUNNING -"
+# echo "$running"
+# echo "- DOCKED -"
+# echo "$docked"
+# exit
+
+keep=$(cat <(echo "$docked") <(cat ~/.config/bin/keep-apps.txt) | sort)
+
+undocked_running=$(comm -13 <(echo "$keep") <(echo "$running"))
+echo "$undocked_running"
+
 osascript -e "on run argv
     repeat with appID in argv
         try
