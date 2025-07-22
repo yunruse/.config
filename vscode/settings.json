@@ -74,7 +74,7 @@
     },
 
     "python.createEnvironment.trigger": "off",
-    "python.defaultInterpreterPath": "/usr/local/bin/python3.12",
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.12",
     "python.interpreter.infoVisibility": "never",
     "python.testing.autoTestDiscoverOnSaveEnabled": false,
 
@@ -88,6 +88,14 @@
     "python.analysis.inlayHints.functionReturnTypes": true,
     "autopep8.importStrategy": "fromEnvironment",
 
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.analysis.typeCheckingMode": "standard",
+    "autopep8.interpreter": [
+        "python3.12"
+    ],
+
     "lammps.AutoComplete.Setting": "None",
     "Lua.telemetry.enable": false,
     "json.format.enable": false,
@@ -97,11 +105,6 @@
     "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
     "lldb.launch.expressions": "native",
     "lldb.suppressUpdateNotifications": true,
-
-    // extensions
-    "vscode-pets.petColor": "green",
-    "vscode-pets.throwBallWithMouse": true,
-    "vscode-pets.petSize": "medium",
 
     // new settings hot and fresh off the GUI
     "chat.commandCenter.enabled": false,
