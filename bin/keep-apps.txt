@@ -1,3 +1,4 @@
 com.apple.finder
 com.colliderli.iina
 com.valvesoftware.steam
+com.hegenberg.BetterTouchTool
