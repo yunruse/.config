@@ -35,7 +35,7 @@
     "workbench.sideBar.location": "right",
     "workbench.editor.empty.hint": "hidden",
 
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "workbench.iconTheme": "catppuccin-frappe",
 
     // git
@@ -66,7 +66,7 @@
     "jupyter.askForKernelRestart": false,
 
     "[tsv]": {
-        "editor.insertSpaces": false,
+        "editor.insertSpaces": false
     },
 
     "[json]": {
@@ -74,7 +74,7 @@
     },
 
     "python.createEnvironment.trigger": "off",
-    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.12",
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.14",
     "python.interpreter.infoVisibility": "never",
     "python.testing.autoTestDiscoverOnSaveEnabled": false,
 
@@ -93,7 +93,7 @@
     },
     "python.analysis.typeCheckingMode": "standard",
     "autopep8.interpreter": [
-        "python3.12"
+        "python3.14"
     ],
 
     "lammps.AutoComplete.Setting": "None",
@@ -107,6 +107,7 @@
     "lldb.suppressUpdateNotifications": true,
 
     // new settings hot and fresh off the GUI
-    "chat.commandCenter.enabled": false,
     "css.format.enable": false,
+    "chat.agent.enabled": false,
+    "chat.disableAIFeatures": true,
 }
