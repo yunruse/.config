@@ -1,18 +1,59 @@
 #!/bin/bash
 
+
+DRY=0
+VERBOSE=0
+FILE="${XDG_CONFIG_HOME:-$HOME/.config}/dock-pinned.txt"
+
+show_help() {
+    cat <<EOF
+usage: quit-undocked-apps [-d|--dry] [-v|--verbose] [-p|pinned] [-h|--help]
+
+Quit (⌘Q) apps which are neither in the dock nor a 'pinned' file
+The pinned file works with bundle names; use --dry to see what would quit.
+
+options:
+  -d, --dry       dry-run; show but do not quit apps (implies -v)
+  -v, --verbose   show dock apps
+  -p, --pinned    specify path of 'pinned' (default: ~/.config/dock-pinned.txt)
+  -h, --help      show this help and exit
+EOF
+    exit 0
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -v|--verbose) VERBOSE=1; shift;;
+    -d|--dry)     DRY=1; VERBOSE=1; shift;;
+    -h|--help)    show_help; shift;;
+    -p|--pinned)  FILE=$2; shift; shift;;
+    -*|--*) echo "Unknown option $1"; exit 1;;
+    *) ;;
+  esac
+done
+
+
 running=$(osascript -e 'tell application "System Events" to get bundle identifier of (every process whose background only is false)' | sed 's/, /\n/g' | sort)
 docked=$(defaults read com.apple.dock persistent-apps | grep 'bundle-identifier' | cut -d '"' -f4 | sort)
-
-# echo "- RUNNING -"
-# echo "$running"
-# echo "- DOCKED -"
-# echo "$docked"
-# exit
-
-keep=$(cat <(echo "$docked") <(cat ~/.config/bin/keep-apps.txt) | sort)
-
+pinned=$(cat $FILE | sort)
+keep=$(cat <(echo "$docked") <(echo "$pinned") | sort)
 undocked_running=$(comm -13 <(echo "$keep") <(echo "$running"))
-echo "$undocked_running"
+
+
+if [[ $VERBOSE -eq 1 ]]; then
+    printf "\e[1;32mPINNED\n\e[0;32m"
+    echo "$pinned"
+
+    printf "\e[1;33mDOCKED\n\e[0;33m"
+    echo "$docked"
+
+    printf "\e[1;31mWILL QUIT\n\e[0;31m"
+    echo "$undocked_running"
+    printf "\e[0m"
+fi
+if [[ $DRY -eq 1 ]]; then
+    exit 0
+fi
 
 osascript -e "on run argv
     repeat with appID in argv
