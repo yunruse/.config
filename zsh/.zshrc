@@ -7,7 +7,7 @@ eval $(/opt/homebrew/bin/brew shellenv)
 
 PS1="$fg[cyan]mia$reset_color %1~ ↦ "
 
-for x (path path_device functions fzf); do
+for x (path functions fzf); do
     x="${HOME}/.config/zsh/${x}.zsh"
     [ -f $x ] && source $x
 done; unset x

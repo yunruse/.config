@@ -56,8 +56,6 @@ function menubar {
 
 
 # python
-alias python="python3.12"
-alias python3="python3.12"
 function import { python -ic "import $*" }
 function from { python -ic "from $*"}
 function pyprint {
