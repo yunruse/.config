@@ -1,0 +1,235 @@
+{
+  "main": {
+    "id": "1b91fb2cdccd2851",
+    "type": "split",
+    "children": [
+      {
+        "id": "73f8d3b0cd5db964",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c0d9813974bb7f40",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ADHD/Barrier log.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Barrier log"
+            }
+          },
+          {
+            "id": "e43684fe9d853985",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "93186be252adc9af",
+    "type": "split",
+    "children": [
+      {
+        "id": "73cb8689d8e5690a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a1ed06c9ba7eeb99",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "49fa696cd74f3851",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "eclipse",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ff004aa3d8162c37",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "aafbf669bc418d3a",
+    "type": "split",
+    "children": [
+      {
+        "id": "1ae0bda672bb20e1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f57064a5600654e8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "2ee6860d52fbab7a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Ξ Attachments/de_ketf_sketch_1.png",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from de_ketf_sketch_1"
+            }
+          },
+          {
+            "id": "b617bf7df3622f42",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "3d3e261529e428be",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Ξ Attachments/de_ketf_sketch_1.png",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of de_ketf_sketch_1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "iconic:Open rulebook": false
+    }
+  },
+  "active": "ff004aa3d8162c37",
+  "lastOpenFiles": [
+    "- Attachments",
+    "- Attachments/Sunless Sea Map.webp",
+    "Gaming",
+    "ADHD/Barrier log.md",
+    "Gaming/Sunless Sea.md",
+    "ADHD/Notes/The Neuroanatomy of ADHD.md",
+    "ADHD/Notes/Designing a doable life.md",
+    "ADHD/Notes",
+    "ADHD/Problems and toolkit/Sleep.md",
+    "ADHD/Problems and toolkit/Time management.md",
+    "ADHD/Problems and toolkit",
+    "- Archive/Community/Gideon the Ninth (cool prose).md",
+    "- Archive/Community/Dungeon Meshi.md",
+    "- Archive/Community/Crockery Pop Quiz.md",
+    "- Archive/Flat Fuckery/Old Flat Email.md",
+    "- Archive/Flat Fuckery/New flat email.md",
+    "- Archive/Flat Fuckery/Advice Response.md",
+    "ADHD/archive/'Willpower' hacks, or limiting prepotent response.md",
+    "- Archive/Me/Archive/ADHD Diagnosis Notes.md",
+    "ADHD/archive",
+    "- Archive/Me/Career/Job ideas.md",
+    "- Archive/Me/Gaming/Blue Prince.md",
+    "- Archive/Me/Gaming/Baldur's Gate 3.md",
+    "- Archive/Me/Gaming/DnD Campaign ideas.md",
+    "- Archive/Me/Gaming/Hades I.md",
+    "- Archive/Me/Trips/Eclipse planning.md",
+    "- Archive/Me/Gaming/ThousandYearOldVampire_SinglePages.pdf",
+    "- Archive/Me/Trips/Puzzlewood.md",
+    "- Archive/Me/Trips/Dundee mrow.md",
+    "- Archive/Me/Trips/Bruixa of Catalonia.md",
+    "- Archive/Me/GIC Meeting.md",
+    "Home/Clothes measurements.md",
+    "Home/MathJax reference.pdf",
+    "Home/Motherboard - GA-Z97X-UD3H.pdf",
+    "Home",
+    "Health",
+    "- Archive/Other ntoes",
+    "Ξ Attachments/Pasted image 20240303214807.png",
+    "Ξ Attachments/nuzhat al-mushtāq.png",
+    "Ξ Attachments/Pasted image 20230916141518.png",
+    "Ξ Attachments/woe.png",
+    "Ξ Attachments/de_ketf_sketch_1.png",
+    "Ξ Attachments/Parts of a church.png",
+    "Ξ Attachments/Butterfly murqanas.png",
+    "Ξ Attachments/Vfélia (hunbloom).png",
+    "Ξ Attachments/WITCHCRAFT TIPS.png",
+    "Duskbreak/Characters/Characters.canvas",
+    "Duskbreak/Events/Abdication Murders.canvas",
+    "Duskbreak/Places/Places.canvas"
+  ]
+}

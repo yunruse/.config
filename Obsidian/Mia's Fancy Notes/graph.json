@@ -1,0 +1,93 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": false,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:\"- OLD ARCHIVE\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 13750737
+      }
+    },
+    {
+      "query": "tag:#character/minor",
+      "color": {
+        "a": 1,
+        "rgb": 16043487
+      }
+    },
+    {
+      "query": "tag:#character/main",
+      "color": {
+        "a": 1,
+        "rgb": 16711799
+      }
+    },
+    {
+      "query": "tag:#character",
+      "color": {
+        "a": 1,
+        "rgb": 14909871
+      }
+    },
+    {
+      "query": "tag:#group",
+      "color": {
+        "a": 1,
+        "rgb": 10562455
+      }
+    },
+    {
+      "query": "tag:#location",
+      "color": {
+        "a": 1,
+        "rgb": 12950550
+      }
+    },
+    {
+      "query": "tag:#event",
+      "color": {
+        "a": 1,
+        "rgb": 15777551
+      }
+    },
+    {
+      "query": "tag:#thing OR tag:#culture",
+      "color": {
+        "a": 1,
+        "rgb": 3421428
+      }
+    },
+    {
+      "query": "tag:#note OR tag:#thread",
+      "color": {
+        "a": 1,
+        "rgb": 6084225
+      }
+    },
+    {
+      "query": "tag:#arc OR tag:#book",
+      "color": {
+        "a": 1,
+        "rgb": 65518
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.23228759765625,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.5133056640625,
+  "repelStrength": 9.55159505208333,
+  "linkStrength": 1,
+  "linkDistance": 30,
+  "scale": 0.38694832261887313,
+  "close": false
+}

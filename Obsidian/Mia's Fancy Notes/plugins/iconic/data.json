@@ -1,0 +1,82 @@
+{
+  "biggerIcons": "mobile",
+  "clickableIcons": "desktop",
+  "showAllFileIcons": true,
+  "showAllFolderIcons": false,
+  "minimalFolderIcons": true,
+  "showMarkdownTabIcons": true,
+  "showTitleIcons": true,
+  "showTagPillIcons": true,
+  "showMenuActions": true,
+  "showSuggestionIcons": true,
+  "showQuickSwitcherIcons": true,
+  "showMoveFileIcons": true,
+  "showItemName": "desktop",
+  "biggerSearchResults": "mobile",
+  "maxSearchResults": 50,
+  "colorPicker1": "list",
+  "colorPicker2": "rgb",
+  "uncolorHover": false,
+  "uncolorDrag": false,
+  "uncolorSelect": false,
+  "uncolorQuick": false,
+  "rememberDeletedItems": false,
+  "dialogState": {
+    "iconMode": false,
+    "emojiMode": true,
+    "rulePage": "file"
+  },
+  "appIcons": {},
+  "tabIcons": {},
+  "fileIcons": {
+    "- Archive": {
+      "icon": "lucide-history",
+      "unsynced": [
+        "73c16f75ef8864f0"
+      ]
+    },
+    "ADHD": {
+      "icon": "🦋",
+      "unsynced": [
+        "73c16f75ef8864f0"
+      ]
+    },
+    "ADHD/Barrier log.md": {
+      "icon": "lucide-fence"
+    },
+    "ADHD/Notes/Designing a doable life.md": {
+      "icon": "lucide-star"
+    },
+    "ADHD/archive": {
+      "icon": "lucide-history",
+      "unsynced": [
+        "73c16f75ef8864f0"
+      ]
+    },
+    "Gaming": {
+      "icon": "🎮",
+      "unsynced": [
+        "73c16f75ef8864f0"
+      ]
+    },
+    "Health": {
+      "icon": "🩷",
+      "unsynced": [
+        "73c16f75ef8864f0"
+      ],
+      "color": "red"
+    },
+    "Home": {
+      "icon": "🏠",
+      "unsynced": [
+        "73c16f75ef8864f0"
+      ]
+    }
+  },
+  "bookmarkIcons": {},
+  "tagIcons": {},
+  "propertyIcons": {},
+  "ribbonIcons": {},
+  "fileRules": [],
+  "folderRules": []
+}

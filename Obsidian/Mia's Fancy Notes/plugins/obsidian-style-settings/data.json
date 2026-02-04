@@ -1,0 +1,12 @@
+{
+  "primary-theme@@h2-text-align": "center",
+  "primary-theme@@h4-style": "italic",
+  "primary-theme@@h2-line-height": 2,
+  "primary-theme@@h2-size": "1.8em",
+  "primary-theme@@h1-color@@dark": "#D07676",
+  "primary-theme@@h1-color@@light": "#BD2F2F",
+  "primary-theme@@h4-text-align": "center",
+  "primary-theme@@h2-font": "Georgia",
+  "primary-theme@@h1-font": "Inter",
+  "primary-theme@@h2-letter-spacing": "0.5px"
+}
