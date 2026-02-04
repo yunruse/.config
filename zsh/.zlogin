@@ -14,7 +14,7 @@ clear
 w1=25
 w2=$(bc -e "$COLUMNS - $w1 - 1")
 hcat <(
-	viu -t -w $w1 ~/.config/zsh/zelda2.png \
+#	viu -t -w $w1 ~/.config/zsh/zelda2.png \
 ) <(\
 	echo "enjoy ur" $(python3 ~/.config/bin/greeting) |\
 	figlet -k -w$w2 |\

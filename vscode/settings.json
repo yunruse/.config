@@ -70,7 +70,7 @@
     },
 
     "[json]": {
-        "editor.defaultFormatter": "Meezilla.json"
+        "editor.defaultFormatter": "j-brooke.fracturedjsonvsc"
     },
 
     "python.createEnvironment.trigger": "off",
@@ -110,4 +110,6 @@
     "css.format.enable": false,
     "chat.agent.enabled": false,
     "chat.disableAIFeatures": true,
+    "terminal.integrated.tabs.enabled": false,
+    "workbench.statusBar.visible": false,
 }

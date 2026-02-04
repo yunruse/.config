@@ -5,8 +5,8 @@
 # Editor aliases
 export EDITOR=micro
 export VISUAL=$EDITOR
-alias edit="$EDITOR"
 alias nano="micro"
+alias cat="bat -p"
 
 
 function zedit {
@@ -15,7 +15,7 @@ function zedit {
 }
 alias zclear="zsh ~/.zlogin"
 
-source ~/Projects/transmission-control/aliases.sh
+source ~/Git/transmission-control/aliases.sh
 
 # Filesystem
 alias ls="eza -hbF --git --no-user -s type"
@@ -26,17 +26,6 @@ function mvself {
 	mv "$(pwd)" $*
 	cd .
 }
-
-# ffmpeg
-
-function ffmpeg-mov-mp4 {
-	ffmpeg -i ~/Downloads/$1.mov ~/Downloads/$1.mp4
-	rm ~/Downloads/$1.mov
-}
-function ffmpeg-merge-img {
-	ffmpeg -loop 1 -i $1 -i $2 -shortest $3
-}
-
 
 # CLI to GUI
 alias preview="open -a preview"
