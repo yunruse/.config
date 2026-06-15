@@ -5,27 +5,35 @@
 *.pyc
 .DS_Store
 
+# other vscode idiocies
+vscode/chatLanguageModels.json
+
 # Cache, because some apps use .config incorrectly :<
 vscode/workspaceStorage
 vscode/globalStorage
 vscode/History
 vscode/sync
+
 micro/buffers
 micro/backup
-Sonarr/
-mole/mole.log
-
 karabiner/assets
 karabiner/automatic_backups
+
+# misc config which isn't in need of tracking
+Sonarr/
+mole/
+eden/
+
 
 
 # Personal stuff and private keys
 ssh/
 gh/hosts.yml
 zsh/calendar.txt
+rclone/
 
 # Device-specific
 bin_device/
 zsh/path_device.zsh
 matplotlib/fontlist-v330.json
-mozilla/vpn.moz
+mozilla/

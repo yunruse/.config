@@ -1,0 +1,15 @@
+{
+    "Class": {
+        "prefix"     : "class",
+        "description": "Simple oop-class",
+        "body"       : [
+            "--- @class ${1:myClass} : ${2:dependency}",
+            "--- ${3:Description}",
+            "${1} = Class(\"${1}\", $2)",
+            "",
+            "function ${1}:init()",
+            "  $0",
+            "end"
+        ]
+    }
+}

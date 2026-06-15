@@ -1,14 +1,19 @@
 {
+    //style
+    "editor.fontFamily": "Fantasque Sans Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.wordWrap": "on",
+
+    "workbench.iconTheme": "catppuccin-frappe",
+
     // editor
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
-    "editor.minimap.size": "fill",
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.renderWhitespace": "all",
     "editor.scrollbar.verticalScrollbarSize": 20,
     "editor.stickyScroll.enabled": true,
-    "editor.wordWrap": "on",
-    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.showReferences": false,
 
     // files
     "explorer.confirmDelete": false,
@@ -34,45 +39,59 @@
     "workbench.tree.renderIndentGuides": "always",
     "workbench.sideBar.location": "right",
     "workbench.editor.empty.hint": "hidden",
+    "workbench.panel.showLabels": false,
 
-    "window.zoomLevel": 0,
-    "workbench.iconTheme": "catppuccin-frappe",
 
     // git
     "git.autofetch": true,
+    "git.blame.editorDecoration.enabled": false,
+    "git.blame.statusBarItem.enabled": false,
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "git.timeline.showUncommitted": true,
     "git.openRepositoryInParentFolders": "never",
-    
-    // cloud stuff
-    "extensions.autoUpdate": "onlyEnabledExtensions",
-    "settingsSync.ignoredExtensions": [],
-    "telemetry.telemetryLevel": "off",
+
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": false,
 
     // terminal    
     "problems.showCurrentInStatus": true,
     "terminal.integrated.bellDuration": 10000,
     "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.enableImages": true,
+    "terminal.integrated.tabs.enabled": false,
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.initialHint": false,
     
-    
-    // Language-specific stuff
-    "mermaid-editor.maxEdges": 1000,
-    "notebook.cellToolbarVisibility": "hover",
-    "notebook.insertToolbarLocation": "betweenCells",
-    "notebook.output.textLineLimit": 80,
-    "notebook.showCellStatusBar": "visibleAfterExecute",
-    "jupyter.askForKernelRestart": false,
+    // sephiroth (go away, cloud)
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "settingsSync.ignoredExtensions": [],
+    "telemetry.telemetryLevel": "off",
 
+    // go away, ai
+    "editor.inlineSuggest.enabled": false,
+    "chat.agent.enabled": false,
+    "chat.disableAIFeatures": true,
+
+    //
+    //  LANGUAGE-SPECIFICS
+    //
+
+    // Misc files
     "[tsv]": {
         "editor.insertSpaces": false
     },
-
     "[json]": {
-        "editor.defaultFormatter": "j-brooke.fracturedjsonvsc"
+        "editor.defaultFormatter": "j-brooke.fracturedjsonvsc",
     },
 
+    // Web
+    "css.format.enable": false,
+    "[javascript, typescript, css]": {
+        "editor.tabSize": 2
+    },
+
+    // Python
     "python.createEnvironment.trigger": "off",
     "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.14",
     "python.interpreter.infoVisibility": "never",
@@ -89,27 +108,36 @@
     "autopep8.importStrategy": "fromEnvironment",
 
     "[python]": {
-        "editor.defaultFormatter": "ms-python.autopep8"
+        "editor.defaultFormatter": "ms-python.black-formatter",
     },
     "python.analysis.typeCheckingMode": "standard",
     "autopep8.interpreter": [
         "python3.14"
     ],
+    
+    // Python: Notebooks
+    "notebook.cellToolbarVisibility": "hover",
+    "notebook.insertToolbarLocation": "betweenCells",
+    "notebook.output.textLineLimit": 80,
+    "notebook.showCellStatusBar": "visibleAfterExecute",
+    "jupyter.askForKernelRestart": false,
 
-    "lammps.AutoComplete.Setting": "None",
+    // Lua
     "Lua.telemetry.enable": false,
-    "json.format.enable": false,
+    "Lua.codeLens.enable": true,
+    "Lua.workspace.library": [
+        "/Users/yunruse/Developer/PlaydateSDK"
+    ],
+    "playdate-debug.productName": "calculatrice",
+    "playdate-debug.outputPath": "",
+
+    // Misc academic
+    "lammps.AutoComplete.Setting": "None",
     "r.rpath.mac": "/usr/local/bin/r",
+    "python.terminal.activateEnvironment": false,
+    "python-envs.terminal.autoActivationType": "off",
 
-    // lldb
-    "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
-    "lldb.launch.expressions": "native",
-    "lldb.suppressUpdateNotifications": true,
-
+    //
     // new settings hot and fresh off the GUI
-    "css.format.enable": false,
-    "chat.agent.enabled": false,
-    "chat.disableAIFeatures": true,
-    "terminal.integrated.tabs.enabled": false,
-    "workbench.statusBar.visible": false,
+    //
 }

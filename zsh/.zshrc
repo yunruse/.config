@@ -5,7 +5,7 @@ autoload -U colors && colors
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval $(/opt/homebrew/bin/brew shellenv)
 
-PS1="$fg[cyan]mia$reset_color %1~ ↦ "
+PS1="$fg[cyan]mia$reset_color $fg[red]%1$reset_color~ ↦ "
 
 for x (path functions fzf); do
     x="${HOME}/.config/zsh/${x}.zsh"

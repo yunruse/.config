@@ -22,4 +22,4 @@ hcat <(
 ) -w $w1 $w2 --sep " "
 
 alias countdown="python -m countdown ~/.config/zsh/calendar.txt -N10"
-countdown $*
+countdown -a

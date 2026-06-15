@@ -18,5 +18,7 @@ PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 # prefer user
 PATH="${HOME}/.config/bin:${HOME}/.config/bin_device:$PATH"
 
+export PLAYDATE_SDK_PATH="${HOME}/Developer/PlaydateSDK"
+
 # echo $PATH
 export PATH
