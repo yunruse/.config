@@ -15,7 +15,7 @@ vscode/History
 vscode/sync
 
 micro/buffers
-micro/backup
+micro/backups
 karabiner/assets
 karabiner/automatic_backups
 
@@ -31,6 +31,7 @@ ssh/
 gh/hosts.yml
 zsh/calendar.txt
 rclone/
+eddie/
 
 # Device-specific
 bin_device/
