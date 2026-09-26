@@ -1,8 +1,56 @@
 {
-    "global"  : {"show_in_menu_bar": false},
-    "profiles": [
+    "global"          : {"show_in_menu_bar": false},
+    "machine_specific": {
+        "krbn-52f70090-8828-42a0-8a03-de5d18e2fee5": {"external_editor_path": "/Applications/Visual Studio Code.app"}
+    },
+    "profiles"        : [
         {
-            "devices"             : [
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description"      : "Magic 'Caps Lock'",
+                        "description_notes": [
+                            "'Caps lock' is CMD",
+                            "In certain games, it is RIGHT-CLICK (camera).",
+                            "In VPNs, it is CTRL."
+                        ],
+                        "manipulators"     : [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": ["com.omnissa.horizon"],
+                                        "type"              : "frontmost_application_if"
+                                    }
+                                ],
+                                "from"      : {
+                                    "key_code" : "caps_lock",
+                                    "modifiers": { "optional": ["left_alt", "right_alt", "left_shift", "right_shift"] }
+                                },
+                                "to"        : {"key_code": "left_control"},
+                                "type"      : "basic"
+                            },
+                            {
+                                "conditions": [
+                                    { "file_paths": ["Astro-Win64-Shipping.exe"], "type": "frontmost_application_if" }
+                                ],
+                                "from"      : {"key_code": "caps_lock"},
+                                "to"        : [ {"pointing_button": "button2"} ],
+                                "type"      : "basic"
+                            },
+                            {
+                                "conditions": [],
+                                "from"      : {
+                                    "key_code" : "caps_lock",
+                                    "modifiers": { "optional": ["left_alt", "right_alt", "left_shift", "right_shift"] }
+                                },
+                                "to"        : {"key_code": "left_command"},
+                                "type"      : "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
                 {
                     "identifiers": {
                         "is_keyboard"       : true,
@@ -38,21 +86,13 @@
                     "identifiers"         : {"is_keyboard": true},
                     "simple_modifications": [
                         {
-                            "from": {"key_code": "caps_lock"},
-                            "to"  : [ {"key_code": "left_control"} ]
-                        },
-                        {
                             "from": {"key_code": "grave_accent_and_tilde"},
-                            "to"  : [ {"key_code": "non_us_backslash"} ]
-                        },
-                        {
-                            "from": {"key_code": "non_us_backslash"},
-                            "to"  : [ {"key_code": "grave_accent_and_tilde"} ]
+                            "to"  : [ {"key_code": "x"} ]
                         }
                     ]
                 }
             ],
-            "fn_function_keys"    : [
+            "fn_function_keys": [
                 {
                     "from": {"key_code": "f5"},
                     "to"  : [ {"apple_vendor_top_case_key_code": "illumination_down"} ]
@@ -62,8 +102,8 @@
                     "to"  : [ {"apple_vendor_top_case_key_code": "illumination_up"} ]
                 }
             ],
-            "name"                : "Default profile",
-            "selected"            : true,
+            "name": "Default profile",
+            "selected": true,
             "virtual_hid_keyboard": {"keyboard_type_v2": "iso"}
         }
     ]
