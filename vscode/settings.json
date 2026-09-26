@@ -29,11 +29,12 @@
 
     // window
     "window.autoDetectColorScheme": true,
-    "window.commandCenter": true,
-    "workbench.activityBar.location": "top",
+    "window.density.editorTabHeight": "compact",
 
-    "workbench.editor.decorations.colors": false,
     "workbench.layoutControl.enabled": false,
+    "workbench.activityBar.autoHide": true,
+    "workbench.activityBar.location": "top",
+    "workbench.editor.decorations.colors": false,
     "workbench.layoutControl.type": "toggles",
     "workbench.tips.enabled": false,
     "workbench.tree.renderIndentGuides": "always",
@@ -54,7 +55,7 @@
     "diffEditor.hideUnchangedRegions.enabled": true,
     "diffEditor.ignoreTrimWhitespace": false,
 
-    // terminal    
+    // terminal
     "problems.showCurrentInStatus": true,
     "terminal.integrated.bellDuration": 10000,
     "terminal.integrated.defaultProfile.osx": "zsh",
@@ -63,15 +64,16 @@
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.initialHint": false,
     
-    // sephiroth (go away, cloud)
+    // bullshit detected! deploying config
     "extensions.autoUpdate": "onlyEnabledExtensions",
     "settingsSync.ignoredExtensions": [],
     "telemetry.telemetryLevel": "off",
-
-    // go away, ai
+    
     "editor.inlineSuggest.enabled": false,
     "chat.agent.enabled": false,
     "chat.disableAIFeatures": true,
+
+    "workbench.experimental.modernUI": false,
 
     //
     //  LANGUAGE-SPECIFICS
@@ -119,7 +121,7 @@
     ],
     "python.terminal.activateEnvironment": false,
     "python-envs.terminal.autoActivationType": "off",
-    
+
     // Python: Notebooks
     "notebook.cellToolbarVisibility": "hover",
     "notebook.insertToolbarLocation": "betweenCells",
@@ -139,7 +141,7 @@
     // Misc academic
     "lammps.AutoComplete.Setting": "None",
     "r.rpath.mac": "/usr/local/bin/r",
-    
+
     //
     // new settings hot and fresh off the GUI
     //
