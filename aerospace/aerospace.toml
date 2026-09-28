@@ -1,0 +1,106 @@
+config-version = 2
+
+# startup
+start-at-login = true
+auto-reload-config = true
+
+accordion-padding = 100
+gaps.inner.horizontal = 2
+gaps.inner.vertical = 2
+
+
+persistent-workspaces = [
+    "1_RELAX",
+    "2_PLAN",
+    "3_CODE",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9_WRITE",
+]
+
+# KEYBOARD
+key-mapping.preset = 'qwerty'
+
+# nb: Karabiner transforms SEMICOLON to ctrl-alt for me.
+[mode.main.binding]
+
+# KL - left-right
+ctrl-alt-k = 'focus left'
+ctrl-alt-shift-k = 'move left'
+ctrl-alt-l = 'focus right'
+ctrl-alt-shift-l = 'move right'
+
+# UJ - up-down
+ctrl-alt-u = 'focus up'
+ctrl-alt-shift-u = 'move up'
+ctrl-alt-j = 'focus down'
+ctrl-alt-shift-j = 'move down'
+
+# IO - resize
+ctrl-alt-i = 'resize smart -50'
+ctrl-alt-shift-i = 'resize smart -250'
+ctrl-alt-o = 'resize smart +50'
+ctrl-alt-shift-o = 'resize smart +250'
+
+# WORKSPACES
+# brackets: move about
+ctrl-alt-leftSquareBracket = 'workspace prev'
+ctrl-alt-rightSquareBracket = 'workspace next'
+ctrl-alt-shift-leftSquareBracket = 'move-node-to-workspace prev'
+ctrl-alt-shift-rightSquareBracket = 'move-node-to-workspace next'
+
+# number bar: workspaces
+ctrl-alt-1 = 'workspace 1_RELAX'
+ctrl-alt-2 = 'workspace 2_PLAN'
+ctrl-alt-3 = 'workspace 3_CODE'
+ctrl-alt-4 = 'workspace 4'
+ctrl-alt-5 = 'workspace 5'
+ctrl-alt-6 = 'workspace 6'
+ctrl-alt-7 = 'workspace 7'
+ctrl-alt-8 = 'workspace 8'
+ctrl-alt-9 = 'workspace 9_WRITE'
+ctrl-alt-minus = 'workspace VM'
+ctrl-alt-equal = 'workspace GAME'
+
+ctrl-alt-shift-1 = 'move-node-to-workspace 1_RELAX'
+ctrl-alt-shift-2 = 'move-node-to-workspace 2_PLAN'
+ctrl-alt-shift-3 = 'move-node-to-workspace 3_CODE'
+ctrl-alt-shift-4 = 'move-node-to-workspace 4'
+ctrl-alt-shift-5 = 'move-node-to-workspace 5'
+ctrl-alt-shift-6 = 'move-node-to-workspace 6'
+ctrl-alt-shift-7 = 'move-node-to-workspace 7'
+ctrl-alt-shift-8 = 'move-node-to-workspace 8'
+ctrl-alt-shift-9 = 'move-node-to-workspace 9_WRITE'
+ctrl-alt-shift-minus = 'move-node-to-workspace VM'
+ctrl-alt-shift-equal = 'move-node-to-workspace GAME'
+
+# Manipulation
+ctrl-alt-comma = 'layout tiles horizontal vertical'
+ctrl-alt-period = 'layout accordion horizontal vertical'
+ctrl-alt-r = 'flatten-workspace-tree'
+ctrl-alt-f = 'layout floating tiling'
+
+# WASD to join
+ctrl-alt-a = ['join-with left', 'mode main']
+ctrl-alt-s = ['join-with down', 'mode main']
+ctrl-alt-w = ['join-with up', 'mode main']
+ctrl-alt-d = ['join-with right', 'mode main']
+
+# Screencapture (goes to clipboard)
+ctrl-alt-c = "exec-and-forget screencapture -c"
+ctrl-alt-v = "exec-and-forget screencapture -cv10"
+
+
+# BEATULS in KEYBOARD
+ctrl-alt-b = [
+    "mode beatuls",
+    "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls.mp3'",
+]
+[mode.beatuls.binding]
+ctrl-alt-b = "mode main"
+
+b = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls.mp3'"
+o = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/paul_okay.mp3'"

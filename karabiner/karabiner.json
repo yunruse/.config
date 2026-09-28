@@ -1,5 +1,5 @@
 {
-    "global"          : {"show_in_menu_bar": false},
+    "global": {"show_in_menu_bar": false},
     "machine_specific": {
         "krbn-52f70090-8828-42a0-8a03-de5d18e2fee5": {"external_editor_path": "/Applications/Visual Studio Code.app"}
     },
@@ -8,9 +8,34 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description"      : "Magic 'Caps Lock'",
+                        "description": "SEMICOLON as the Aerospace key",
+                        "manipulators": [
+                            {
+                                "conditions"     : [
+                                    {
+                                        "bundle_identifiers": ["com.omnissa.horizon"],
+                                        "type"              : "frontmost_application_unless"
+                                    }
+                                ],
+                                "from"           : {
+                                    "key_code" : "semicolon",
+                                    "modifiers": { "optional": ["left_shift"] }
+                                },
+                                "to"             : [
+                                    { "key_code": "left_alt", "modifiers": ["left_control"] }
+                                ],
+                                "to_if_alone": [ {"key_code": "semicolon"} ],
+                                "to_if_held_down": [
+                                    { "key_code": "left_alt", "modifiers": ["left_control"] }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Magic 'Caps Lock'",
                         "description_notes": [
-                            "'Caps lock' is CMD",
+                            "'Caps lock' is CMD.",
                             "In certain games, it is RIGHT-CLICK (camera).",
                             "In VPNs, it is CTRL."
                         ],
@@ -58,10 +83,10 @@
                         "product_id"        : 321,
                         "vendor_id"         : 1241
                     },
-                    "ignore"     : false
+                    "ignore": false
                 },
                 {
-                    "identifiers"         : {"is_keyboard": true, "product_id": 321, "vendor_id": 1241},
+                    "identifiers": {"is_keyboard": true, "product_id": 321, "vendor_id": 1241},
                     "simple_modifications": [
                         {
                             "from": {"key_code": "left_command"},
@@ -83,7 +108,7 @@
                     "mouse_flip_vertical_wheel": true
                 },
                 {
-                    "identifiers"         : {"is_keyboard": true},
+                    "identifiers": {"is_keyboard": true},
                     "simple_modifications": [
                         {
                             "from": {"key_code": "grave_accent_and_tilde"},

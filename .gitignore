@@ -33,6 +33,8 @@ zsh/calendar.txt
 rclone/
 eddie/
 
+assets/beatuls
+
 # Device-specific
 bin_device/
 zsh/path_device.zsh
