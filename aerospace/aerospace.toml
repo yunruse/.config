@@ -93,14 +93,93 @@ ctrl-alt-d = ['join-with right', 'mode main']
 ctrl-alt-c = "exec-and-forget screencapture -c"
 ctrl-alt-v = "exec-and-forget screencapture -cv10"
 
+# modes
+ctrl-alt-shift-c = "mode screenshot"
+ctrl-alt-b = "mode beatuls"
 
-# BEATULS in KEYBOARD
-ctrl-alt-b = [
-    "mode beatuls",
-    "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls.mp3'",
-]
+[mode.screenshot.binding]
+semicolon = ["exec-and-forget screencapture -c", "mode main"]
+
 [mode.beatuls.binding]
+# BEATULS in KEYBOARD
 ctrl-alt-b = "mode main"
 
-b = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls.mp3'"
-o = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/paul_okay.mp3'"
+# CTRL: names
+ctrl-j = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/john.mp3'"
+ctrl-r = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/ringo.mp3'"
+ctrl-p = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/paul.mp3'"
+ctrl-g = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/george.mp3'"
+
+ctrl-b = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls.mp3'"
+ctrl-l = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/liverpool.mp3'"
+
+# NO MODIFIERS: generally common phrases, verbs, grammar
+b = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/is_born.mp3'"
+backslash = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/name_thats.mp3'"
+backtick = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/molten_rock.mp3'"
+g = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/get.mp3'"
+h = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/help.mp3'"
+i = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/is_just.mp3'"
+m = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/my.mp3'"
+n = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/need_to_be.mp3'"
+o = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/only.mp3'"
+p = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/please.mp3'"
+s = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/steal.mp3'"
+t = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/tax.mp3'"
+w = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/with.mp3'"
+
+# CMD: generally nouns
+cmd-backslash = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/name_still.mp3'"
+cmd-backtick = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/lava.mp3'"
+cmd-b = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/bomb.mp3'"
+cmd-f = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/fighting.mp3'"
+cmd-g = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/guards.mp3'"
+cmd-h = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/horses.mp3'"
+cmd-l = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/love.mp3'"
+cmd-o = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/ohno.mp3'"
+cmd-p = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/peace.mp3'"
+cmd-q = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/wallet.mp3'"
+cmd-r = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/run.mp3'"
+cmd-s = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/story.mp3'"
+cmd-t = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/taxman.mp3'"
+cmd-w = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/watuh.mp3'"
+
+# ALT: generally adjectives or modifiers
+alt-s = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/strange.mp3'"
+
+# SHIFT: generally longer expressions
+shift-b = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls_drop_that_beat.mp3'"
+shift-e = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/every_100_years.mp3'"
+shift-f = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/fanmail.mp3'"
+shift-g = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/goron_city.mp3'"
+shift-h = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/here_comes_a_cool_science_fact.mp3'"
+shift-i = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/i_am_here.mp3'"
+shift-l = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/look_out.mp3'"
+shift-n = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/no_more.mp3'"
+shift-o = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/paul_okay.mp3'"
+shift-p = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/please_stop.mp3'"
+shift-cmd-p = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/peace_and_love.mp3'"
+shift-t = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/is_torn.mp3'"
+shift-cmd-w = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/i_want_to_tell_you.mp3'"
+shift-w = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/where_is.mp3'"
+
+# NUMERICS: yeah!
+1 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/yeah1.mp3'"
+2 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/yeah2.mp3'"
+3 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/yeah3.mp3'"
+4 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/yeah4.mp3'"
+5 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/yeah5.mp3'"
+6 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/yeah6.mp3'"
+9 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/yeah_yeah_yeah.mp3'"
+
+# CMD NUMERICS: Wah
+cmd-1 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/wah1.mp3'"
+cmd-2 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/wah2.mp3'"
+
+# SHIFT NUMERICS: Other
+
+shift-1 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls1.mp3'"
+shift-2 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls2.mp3'"
+shift-3 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls3.mp3'"
+shift-4 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls4.mp3'"
+shift-5 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/bee.mp3'"
