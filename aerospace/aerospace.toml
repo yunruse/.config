@@ -135,25 +135,31 @@ cmd-b = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/bomb.mp3'
 cmd-f = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/fighting.mp3'"
 cmd-g = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/guards.mp3'"
 cmd-h = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/horses.mp3'"
+cmd-j = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/joke.mp3'"
+cmd-k = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/knee.mp3'"
 cmd-l = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/love.mp3'"
 cmd-o = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/ohno.mp3'"
 cmd-p = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/peace.mp3'"
 cmd-q = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/wallet.mp3'"
 cmd-r = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/run.mp3'"
 cmd-s = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/story.mp3'"
+cmd-shift-s = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/star.mp3'"
 cmd-t = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/taxman.mp3'"
 cmd-w = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/watuh.mp3'"
 
 # ALT: generally adjectives or modifiers
 alt-s = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/strange.mp3'"
+alt-w = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/why.mp3'"
 
 # SHIFT: generally longer expressions
 shift-b = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/beatuls_drop_that_beat.mp3'"
+shift-c = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/im_a_cowboy.mp3'"
 shift-e = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/every_100_years.mp3'"
 shift-f = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/fanmail.mp3'"
 shift-g = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/goron_city.mp3'"
 shift-h = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/here_comes_a_cool_science_fact.mp3'"
 shift-i = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/i_am_here.mp3'"
+shift-j = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/he_got_to_be_a_joker.mp3'"
 shift-l = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/look_out.mp3'"
 shift-n = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/no_more.mp3'"
 shift-o = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/paul_okay.mp3'"
@@ -175,6 +181,7 @@ shift-w = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/where_i
 # CMD NUMERICS: Wah
 cmd-1 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/wah1.mp3'"
 cmd-2 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/wah2.mp3'"
+cmd-7 = "exec-and-forget afplay '/users/yunruse/.config/assets/beatuls/hehehehe.mp3'"
 
 # SHIFT NUMERICS: Other
 
